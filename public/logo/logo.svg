@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 90" fill="none">
+  <defs>
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F6E7B9" />
+      <stop offset="25%" stop-color="#D4AF37" />
+      <stop offset="50%" stop-color="#FFF2A3" />
+      <stop offset="75%" stop-color="#B8860B" />
+      <stop offset="100%" stop-color="#F1D18A" />
+    </linearGradient>
+    <linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B8860B" />
+      <stop offset="50%" stop-color="#FFF6CC" />
+      <stop offset="100%" stop-color="#B8860B" />
+    </linearGradient>
+    <filter id="gold-glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#gold-glow)">
+    <!-- Main AANYA text -->
+    <text x="180" y="44" 
+          text-anchor="middle" 
+          font-family="'Playfair Display', 'Cormorant Garamond', 'Cinzel', Georgia, serif" 
+          font-size="42" 
+          font-weight="700" 
+          letter-spacing="5" 
+          fill="url(#gold-grad)">
+      AANYA
+    </text>
+
+    <!-- Decorative Flourish Ribbon / Swash -->
+    <path d="M 28 48 C 80 40, 140 50, 180 47 C 220 44, 280 38, 332 46 C 300 48, 250 49, 180 50 C 110 51, 60 50, 28 48 Z" 
+          fill="url(#shimmer)" opacity="0.9" />
+
+    <!-- Subtitle SHARMA -->
+    <text x="180" y="74" 
+          text-anchor="middle" 
+          font-family="'Playfair Display', 'Cormorant Garamond', Georgia, serif" 
+          font-size="21" 
+          font-weight="600" 
+          letter-spacing="10" 
+          fill="url(#gold-grad)">
+      SHARMA
+    </text>
+  </g>
+</svg>

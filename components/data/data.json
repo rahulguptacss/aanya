@@ -1,0 +1,1324 @@
+{
+  "common": {
+    "Header": {
+      "logo": "/logo/logo.webp",
+      "logo_text": "AANYA SHARMA",
+      "logo_subtext": "FASHION MODEL",
+      "links": [
+        {
+          "name": "Home",
+          "href": "/"
+        },
+        {
+          "name": "About",
+          "href": "/about"
+        },
+        {
+          "name": "Services",
+          "href": "/services"
+        },
+        {
+          "name": "Portfolio",
+          "href": "/portfolio"
+        },
+        {
+          "name": "Blog",
+          "href": "/blog"
+        },
+        {
+          "name": "Contact",
+          "href": "/contact"
+        }
+      ],
+      "menu_aria_label": "Open navigation menu",
+      "close_aria_label": "Close navigation menu"
+    },
+    "Footer": {
+      "logo": "/logo/logo.webp",
+      "logo_text": "AANYA SHARMA",
+      "logo_subtext": "FASHION MODEL & TALENT",
+      "agency": "Aanya Sharma Model Management",
+      "address": "123 Education Lane,\nNew York, NY 10001",
+      "phone": "+100000000000",
+      "email": "info@xyz.com",
+      "socials": [
+        {
+          "name": "Instagram",
+          "href": "https://instagram.com",
+          "icon": "instagram",
+          "aria_label": "Instagram profile"
+        },
+        {
+          "name": "X",
+          "href": "https://x.com",
+          "icon": "x",
+          "aria_label": "X profile"
+        },
+        {
+          "name": "Facebook",
+          "href": "https://facebook.com",
+          "icon": "facebook",
+          "aria_label": "Facebook profile"
+        }
+      ],
+      "links": [
+        {
+          "name": "Home",
+          "href": "/"
+        },
+        {
+          "name": "About",
+          "href": "/about"
+        },
+        {
+          "name": "Services",
+          "href": "/services"
+        },
+        {
+          "name": "Portfolio",
+          "href": "/portfolio"
+        },
+        {
+          "name": "Blog",
+          "href": "/blog"
+        },
+        {
+          "name": "Contact",
+          "href": "/contact"
+        }
+      ],
+      "copyright": "Copyright © 2026. All rights reserved. Powered by Lestow"
+    },
+    "BackToTop": {
+      "aria_label": "Back to top of page"
+    }
+  },
+  "categories": {
+    "FashionModel": {
+      "templateComponents": {
+        "template-1": {
+          "pages": {
+            "home": {
+              "title": "Aanya Sharma | International High Fashion Model",
+              "pageName": "Home",
+              "metadata": {
+                "title": "Aanya Sharma | High Fashion & Runway Model Portfolio",
+                "description": "Official portfolio of Aanya Sharma, international fashion and runway model with 5+ years experience working with luxury global brands."
+              },
+              "components": [
+                {
+                  "key": "HeroSection",
+                  "component": "Hero"
+                },
+                {
+                  "key": "AboutSection",
+                  "component": "About"
+                },
+                {
+                  "key": "PortfolioSection",
+                  "component": "Portfolio"
+                },
+                {
+                  "key": "TestimonialsSection",
+                  "component": "Testimonials"
+                },
+                {
+                  "key": "GallerySection",
+                  "component": "Gallery"
+                }
+              ]
+            },
+            "not_found": {
+              "code": "404",
+              "badge": "Page Not Found",
+              "title": "Lost on the Runway?",
+              "description": "The page you're looking for doesn't exist or has moved.",
+              "back_home": {
+                "text": "Return to Portfolio",
+                "href": "/"
+              }
+            },
+            "about": {
+              "title": "About Us | Aanya Sharma",
+              "pageName": "About Us",
+              "metadata": {
+                "title": "About Us | Aanya Sharma - High Fashion Model & Editorial Talent",
+                "description": "Discover Aanya Sharma's journey, mission, vision, brand collaborations, and professional modeling skills."
+              },
+              "components": [
+                {
+                  "key": "BreadcrumbSection",
+                  "component": "Breadcrumb"
+                },
+                {
+                  "key": "AboutSection",
+                  "component": "About"
+                },
+                {
+                  "key": "MissionSection",
+                  "component": "Mission"
+                },
+                {
+                  "key": "VisionSection",
+                  "component": "Vision"
+                },
+                {
+                  "key": "BrandsSection",
+                  "component": "Brands"
+                },
+                {
+                  "key": "SkillsSection",
+                  "component": "Skills"
+                }
+              ]
+            },
+            "portfolio": {
+              "title": "Portfolio | Aanya Sharma",
+              "pageName": "Portfolio",
+              "metadata": {
+                "title": "Portfolio | Aanya Sharma - High Fashion & Editorial Portfolio",
+                "description": "Explore the official modeling portfolio of Aanya Sharma featuring editorial, high-fashion, commercial, and runway campaigns."
+              },
+              "components": [
+                {
+                  "key": "BreadcrumbSection",
+                  "component": "Breadcrumb"
+                },
+                {
+                  "key": "PortfolioSection",
+                  "component": "Portfolio"
+                }
+              ]
+            },
+            "services": {
+              "title": "Services | Aanya Sharma",
+              "pageName": "Our services",
+              "metadata": {
+                "title": "Our Services | Aanya Sharma - High Fashion & Editorial Talent",
+                "description": "Explore professional modeling services by Aanya Sharma: Fashion Modelling, Brand Campaigns, Commercial Shoots, and Editorial & Magazine features."
+              },
+              "components": [
+                {
+                  "key": "BreadcrumbSection",
+                  "component": "Breadcrumb"
+                },
+                {
+                  "key": "ServicesSection",
+                  "component": "Services"
+                },
+                {
+                  "key": "TestimonialsSection",
+                  "component": "Testimonials"
+                }
+              ]
+            },
+            "blog": {
+              "title": "Blog | Aanya Sharma",
+              "pageName": "Our Blogs",
+              "metadata": {
+                "title": "Latest Articles & Insights | Aanya Sharma - Fashion & Modeling Blog",
+                "description": "Explore fashion trends, modelling tips, photoshoot experiences and lifestyle articles to stay inspired and informed with Aanya Sharma."
+              },
+              "components": [
+                {
+                  "key": "BreadcrumbSection",
+                  "component": "Breadcrumb"
+                },
+                {
+                  "key": "BlogListSection",
+                  "component": "BlogList"
+                }
+              ]
+            },
+            "blog_detail": {
+              "title": "Blog Detail | Aanya Sharma",
+              "pageName": "Blog Detail",
+              "metadata": {
+                "title": "How to Build a Successful Model Portfolio | Aanya Sharma",
+                "description": "Essential elements of creating a strong model portfolio that stands out to top agencies."
+              },
+              "components": [
+                {
+                  "key": "BreadcrumbSection",
+                  "component": "Breadcrumb"
+                },
+                {
+                  "key": "BlogDetailSection",
+                  "component": "BlogDetail"
+                }
+              ]
+            },
+            "contact": {
+              "title": "Contact Us | Aanya Sharma",
+              "pageName": "Contact Us",
+              "metadata": {
+                "title": "Contact Us | Aanya Sharma - Fashion Model & Editorial Talent",
+                "description": "Get in touch with Aanya Sharma for fashion modelling, runway shows, brand campaigns, commercial shoots and editorial features."
+              },
+              "components": [
+                {
+                  "key": "BreadcrumbSection",
+                  "component": "Breadcrumb"
+                },
+                {
+                  "key": "ContactSection",
+                  "component": "Contact"
+                }
+              ]
+            }
+          },
+          "sections": {
+            "breadcrumb": {
+              "title": "Aanya Sharma",
+              "background_image": "/hero/banner-b.webp",
+              "background_alt": "Aanya Sharma banner with emerald green silk",
+              "items": [
+                {
+                  "name": "Home",
+                  "href": "/"
+                }
+              ]
+            },
+            "hero": {
+              "title_first": "AANYA",
+              "title_last": "SHARMA",
+              "subtitle": "Fashion Model & Editorial Talent",
+              "background_image": "/hero/hero.webp",
+              "background_alt": "Aanya Sharma high fashion editorial photoshoot",
+              "cta_link": "/#portfolio",
+              "cta_text": "Explore Portfolio"
+            },
+            "about": {
+              "eyebrow": "ABOUT ME",
+              "title_line1": "More Than",
+              "title_line2": "Just a Model",
+              "description": "I'm Aanya Sharma, a fashion model passionate about expressing stories through style, elegance, and emotion. From high-fashion runways to brand campaigns, I love bringing unique visions to life and collaborating with amazing creatives around the world.",
+              "description_paragraphs": [
+                "I'm Aanya Sharma, a fashion model passionate about expressing stories through style, elegance, and emotion. From high-fashion runways to brand campaigns, I love bringing unique visions to life and collaborating with amazing creatives around the world.",
+                "With years of experience walking for international designers and fronting editorial spreads, my journey is driven by discipline, artistic expression, and a commitment to authenticity on every set."
+              ],
+              "image": "/about/about.webp",
+              "image_alt": "Aanya Sharma fashion portrait wearing knit sweater",
+              "stats": [
+                {
+                  "value": "5+",
+                  "label": "Years Experience"
+                },
+                {
+                  "value": "50+",
+                  "label": "Brands Worked"
+                },
+                {
+                  "value": "100+",
+                  "label": "Photoshoots"
+                }
+              ]
+            },
+            "stats": {
+              "items": [
+                {
+                  "value": "5+",
+                  "label": "YEARS EXPERIENCE"
+                },
+                {
+                  "value": "100+",
+                  "label": "PROJECTS"
+                },
+                {
+                  "value": "50+",
+                  "label": "GLOBAL BRANDS"
+                },
+                {
+                  "value": "10+",
+                  "label": "FASHION SHOWS"
+                }
+              ]
+            },
+            "mission": {
+              "eyebrow": "OUR MISSION",
+              "title_regular": "Empowering Talent,",
+              "title_highlight": "Inspiring Possibilities",
+              "description": "Our mission is to discover, nurture and represent exceptional talent, creating meaningful opportunities in fashion, beauty and lifestyle. We strive to build lasting careers and inspire confidence through authentic representation while connecting our models with leading brands and global platforms.",
+              "image": "/about/mission.webp",
+              "image_alt": "Aanya Sharma empowering talent in champagne tulle dress"
+            },
+            "vision": {
+              "eyebrow": "OUR VISION",
+              "title_regular": "Shaping a Brighter Future,",
+              "title_highlight": "Through Talent and Opportunity",
+              "description": "Our vision is to be a globally renowned talent model agency celebrating diversity, authentic storytelling in fashion and lifestyle, and endless possibilities for our talent. We aspire to inspire confidence, empower individuals to achieve their dreams, and build lasting relationships with leading brands and international markets.",
+              "image": "/about/vision.webp",
+              "image_alt": "Aanya Sharma shaping a brighter future in ivory embroidered lehenga"
+            },
+            "brands": {
+              "eyebrow": "WE ARE EXPERIENCED",
+              "title_regular": "With",
+              "title_highlight": "Leading Brands",
+              "subtitle": "We have had the privilege of working with some of the most renowned brands in the fashion, beauty and lifestyle industry.",
+              "items": [
+                {
+                  "id": "lancome",
+                  "name": "LANCÔME PARIS",
+                  "image": "/brand/1.webp"
+                },
+                {
+                  "id": "chanel",
+                  "name": "CHANEL",
+                  "image": "/brand/2.webp"
+                },
+                {
+                  "id": "dior",
+                  "name": "DIOR",
+                  "image": "/brand/3.webp"
+                },
+                {
+                  "id": "estee-lauder",
+                  "name": "ESTÉE LAUDER",
+                  "image": "/brand/4.webp"
+                },
+                {
+                  "id": "mac",
+                  "name": "M·A·C",
+                  "image": "/brand/5.webp"
+                },
+                {
+                  "id": "tom-ford",
+                  "name": "TOM FORD",
+                  "image": "/brand/6.webp"
+                },
+                {
+                  "id": "lancome-2",
+                  "name": "LANCÔME PARIS",
+                  "image": "/brand/1.webp"
+                },
+                {
+                  "id": "chanel-2",
+                  "name": "CHANEL",
+                  "image": "/brand/2.webp"
+                },
+                {
+                  "id": "dior-2",
+                  "name": "DIOR",
+                  "image": "/brand/3.webp"
+                },
+                {
+                  "id": "estee-lauder-2",
+                  "name": "ESTÉE LAUDER",
+                  "image": "/brand/4.webp"
+                },
+                {
+                  "id": "mac-2",
+                  "name": "M·A·C",
+                  "image": "/brand/5.webp"
+                },
+                {
+                  "id": "tom-ford-2",
+                  "name": "TOM FORD",
+                  "image": "/brand/6.webp"
+                }
+              ]
+            },
+            "skills": {
+              "eyebrow": "SKILLS",
+              "title_regular": "My Professional",
+              "title_highlight": "Skills",
+              "subtitle": "With creativity, expertise and a passion for aesthetics, I deliver exceptional work in every project.",
+              "items": [
+                {
+                  "id": "makeup-artistry",
+                  "name": "Makeup Artistry",
+                  "percentage": 95,
+                  "icon": "brush"
+                },
+                {
+                  "id": "photoshoot-collaboration",
+                  "name": "Photoshoot Collaboration",
+                  "percentage": 85,
+                  "icon": "camera"
+                },
+                {
+                  "id": "hair-styling",
+                  "name": "Hair Styling",
+                  "percentage": 90,
+                  "icon": "hair"
+                },
+                {
+                  "id": "beauty-consultation",
+                  "name": "Beauty Consultation",
+                  "percentage": 80,
+                  "icon": "lotus"
+                },
+                {
+                  "id": "fashion-styling",
+                  "name": "Fashion Styling",
+                  "percentage": 85,
+                  "icon": "dress"
+                },
+                {
+                  "id": "client-communication",
+                  "name": "Client Communication",
+                  "percentage": 90,
+                  "icon": "users"
+                }
+              ]
+            },
+            "portfolio": {
+              "title": "MY PORTFOLIO",
+              "subtitle": "A COLLECTION OF MY BEST WORK",
+              "all_category_label": "All",
+              "categories": [
+                "All",
+                "Fashion",
+                "Editorial",
+                "Runway",
+                "Commercial",
+                "Beauty",
+                "Lifestyle"
+              ],
+              "items": [
+                {
+                  "id": "fashion",
+                  "title": "FASHION",
+                  "category": "Fashion",
+                  "image": "/portfolio/portfolio-1.webp",
+                  "image_alt": "Aanya Sharma fashion editorial in black gown",
+                  "tag": "FASHION",
+                  "href": "#contact"
+                },
+                {
+                  "id": "beauty",
+                  "title": "BEAUTY",
+                  "category": "Beauty",
+                  "image": "/portfolio/portfolio-2.webp",
+                  "image_alt": "Aanya Sharma beauty photoshoot with flowers",
+                  "tag": "BEAUTY",
+                  "href": "#contact"
+                },
+                {
+                  "id": "runway",
+                  "title": "RUNWAY",
+                  "category": "Runway",
+                  "image": "/portfolio/portfolio-17.webp",
+                  "image_alt": "Aanya Sharma runway haute couture show",
+                  "tag": "RUNWAY",
+                  "href": "#contact"
+                },
+                {
+                  "id": "commercial",
+                  "title": "COMMERCIAL",
+                  "category": "Commercial",
+                  "image": "/portfolio/portfolio-7.webp",
+                  "image_alt": "Aanya Sharma commercial photoshoot in white shirt",
+                  "tag": "COMMERCIAL",
+                  "href": "#contact"
+                },
+                {
+                  "id": "lifestyle",
+                  "title": "LIFESTYLE",
+                  "category": "Lifestyle",
+                  "image": "/portfolio/portfolio-11.webp",
+                  "image_alt": "Aanya Sharma lifestyle golden hour photoshoot",
+                  "tag": "LIFESTYLE",
+                  "href": "#contact"
+                },
+                {
+                  "id": "p-3",
+                  "title": "Sensual Evening Glam",
+                  "category": "Beauty",
+                  "image": "/portfolio/portfolio-3.webp",
+                  "image_alt": "Aanya Sharma dark portrait looking over shoulder",
+                  "tag": "BEAUTY",
+                  "href": "#contact"
+                },
+                {
+                  "id": "p-4",
+                  "title": "Baby's Breath Bloom",
+                  "category": "Beauty",
+                  "image": "/portfolio/portfolio-4.webp",
+                  "image_alt": "Aanya Sharma with white gypsophila flowers",
+                  "tag": "BEAUTY",
+                  "href": "#contact"
+                },
+                {
+                  "id": "p-5",
+                  "title": "Beaded Couture Column",
+                  "category": "Fashion",
+                  "image": "/portfolio/portfolio-5.webp",
+                  "image_alt": "Aanya Sharma beaded gown against stone column",
+                  "tag": "FASHION",
+                  "href": "#contact"
+                },
+                {
+                  "id": "p-6",
+                  "title": "Golden Hour Updo",
+                  "category": "Beauty",
+                  "image": "/portfolio/portfolio-6.webp",
+                  "image_alt": "Aanya Sharma golden light portrait with bun",
+                  "tag": "BEAUTY",
+                  "href": "#contact"
+                },
+                {
+                  "id": "p-8",
+                  "title": "Minimalist Black Turtleneck",
+                  "category": "Editorial",
+                  "image": "/portfolio/portfolio-8.webp",
+                  "image_alt": "Aanya Sharma black turtleneck sweater",
+                  "tag": "EDITORIAL",
+                  "href": "#contact"
+                },
+                {
+                  "id": "p-9",
+                  "title": "Azure Garden Gown",
+                  "category": "Lifestyle",
+                  "image": "/portfolio/portfolio-9.webp",
+                  "image_alt": "Aanya Sharma light blue dress outdoors",
+                  "tag": "LIFESTYLE",
+                  "href": "#contact"
+                },
+                {
+                  "id": "p-10",
+                  "title": "Midnight Gold Jhumka Glam",
+                  "category": "Fashion",
+                  "image": "/portfolio/portfolio-10.webp",
+                  "image_alt": "Aanya Sharma black sheer dupatta and gold jewelry",
+                  "tag": "FASHION",
+                  "href": "#contact"
+                },
+                {
+                  "id": "p-12",
+                  "title": "Champagne Lace Reverie",
+                  "category": "Fashion",
+                  "image": "/portfolio/portfolio-12.webp",
+                  "image_alt": "Aanya Sharma champagne gown lying down",
+                  "tag": "FASHION",
+                  "href": "#contact"
+                },
+                {
+                  "id": "p-13",
+                  "title": "Tailored Midnight Blazer",
+                  "category": "Commercial",
+                  "image": "/portfolio/portfolio-13.webp",
+                  "image_alt": "Aanya Sharma black blazer hand on chin",
+                  "tag": "COMMERCIAL",
+                  "href": "#contact"
+                },
+                {
+                  "id": "p-14",
+                  "title": "Lavender Meadow Dream",
+                  "category": "Editorial",
+                  "image": "/portfolio/portfolio-14.webp",
+                  "image_alt": "Aanya Sharma pink floral dress in lavender meadow",
+                  "tag": "EDITORIAL",
+                  "href": "#contact"
+                },
+                {
+                  "id": "p-15",
+                  "title": "Soft Morning Serenity",
+                  "category": "Lifestyle",
+                  "image": "/portfolio/portfolio-15.webp",
+                  "image_alt": "Aanya Sharma lying in white knit sweater",
+                  "tag": "LIFESTYLE",
+                  "href": "#contact"
+                },
+                {
+                  "id": "p-16",
+                  "title": "Coastline Noir Swimwear",
+                  "category": "Runway",
+                  "image": "/portfolio/portfolio-16.webp",
+                  "image_alt": "Aanya Sharma black swimsuit on rocky beach",
+                  "tag": "RUNWAY",
+                  "href": "#contact"
+                },
+                {
+                  "id": "p-18",
+                  "title": "White Rose Bridal Radiance",
+                  "category": "Beauty",
+                  "image": "/portfolio/portfolio-18.webp",
+                  "image_alt": "Aanya Sharma holding white roses bouquet",
+                  "tag": "BEAUTY",
+                  "href": "#contact"
+                },
+                {
+                  "id": "p-19",
+                  "title": "Dusty Rose Twilight Tulle",
+                  "category": "Editorial",
+                  "image": "/portfolio/portfolio-19.webp",
+                  "image_alt": "Aanya Sharma pink tulle gown in sunset flower field",
+                  "tag": "EDITORIAL",
+                  "href": "#contact"
+                }
+              ],
+              "read_more_text": "Read More",
+              "lightbox_modal_title": "AANYA SHARMA PORTFOLIO",
+              "lightbox_close_label": "Close modal",
+              "lightbox_prev_label": "Previous image",
+              "lightbox_next_label": "Next image",
+              "homepage_count": 5,
+              "portfolio_page_count": 15
+            },
+            "testimonials": {
+              "title_lines": [
+                "WHAT OUR",
+                "CLIENTS &",
+                "TALENT SAY"
+              ],
+              "scroll_hint": "Scroll to explore stories",
+              "items": [
+                {
+                  "id": "ava-sinclair",
+                  "quote": "I landed my first runway show through Iconique, and now I'm booking international campaigns!",
+                  "author": "AVA SINCLAIR",
+                  "role": "MODEL",
+                  "image": "/testimonials/ava-sinclair.webp",
+                  "image_alt": "Ava Sinclair fashion model portrait"
+                },
+                {
+                  "id": "riya-mehra",
+                  "quote": "Working with Aanya Sharma was an incredible experience. She understood my vision perfectly and brought it to life with amazing creativity and professionalism.",
+                  "author": "RIYA MEHRA",
+                  "role": "FASHION MODEL",
+                  "image": "/testimonials/riya-mehra.webp",
+                  "image_alt": "Riya Mehra fashion model portrait"
+                },
+                {
+                  "id": "elena-rossi",
+                  "quote": "An absolute powerhouse on set. Aanya's poise, precision, and commanding presence in front of the lens elevate every single campaign.",
+                  "author": "ELENA ROSSI",
+                  "role": "CREATIVE DIRECTOR, MILAN",
+                  "image": "/testimonials/elena-rossi.webp",
+                  "image_alt": "Elena Rossi creative director portrait"
+                }
+              ]
+            },
+            "gallery": {
+              "title": "INSTAGRAM & EDITORIAL",
+              "items": [
+                {
+                  "id": "g-1",
+                  "image": "/gallery/gallery-1.webp",
+                  "alt": "Aanya Sharma Knitwear Editorial"
+                },
+                {
+                  "id": "g-2",
+                  "image": "/gallery/gallery-2.webp",
+                  "alt": "Ava Sinclair Tailored Blazer"
+                },
+                {
+                  "id": "g-3",
+                  "image": "/gallery/gallery-3.webp",
+                  "alt": "Aanya Sharma Terracotta Sunset"
+                },
+                {
+                  "id": "g-4",
+                  "image": "/gallery/gallery-4.webp",
+                  "alt": "Aanya Sharma Powder Blue Organza"
+                },
+                {
+                  "id": "g-5",
+                  "image": "/gallery/gallery-5.webp",
+                  "alt": "Aanya Sharma Golden Hour Gown"
+                },
+                {
+                  "id": "g-6",
+                  "image": "/gallery/gallery-6.webp",
+                  "alt": "Aanya Sharma White Shirt Monochrome"
+                },
+                {
+                  "id": "g-7",
+                  "image": "/gallery/gallery-7.webp",
+                  "alt": "Aanya Sharma Ethereal Tulle Portrait"
+                }
+              ]
+            },
+            "services": {
+              "eyebrow": "OUR",
+              "title": "SERVICES",
+              "items": [
+                {
+                  "id": "s-1",
+                  "title": "Fashion Modelling",
+                  "image": "/services/1.webp",
+                  "alt": "Fashion Modelling - Aanya Sharma"
+                },
+                {
+                  "id": "s-2",
+                  "title": "Brand Campaign",
+                  "image": "/services/2.webp",
+                  "alt": "Brand Campaign - Aanya Sharma"
+                },
+                {
+                  "id": "s-3",
+                  "title": "Commercial Shoot",
+                  "image": "/services/3.webp",
+                  "alt": "Commercial Shoot - Aanya Sharma"
+                },
+                {
+                  "id": "s-4",
+                  "title": "EDITORIAL & MAGAZINE",
+                  "image": "/services/4.webp",
+                  "alt": "Editorial & Magazine - Aanya Sharma"
+                }
+              ]
+            },
+            "blog_list": {
+              "eyebrow": "OUR BLOG",
+              "title_regular": "Latest Articles ",
+              "title_highlight": "& Insights",
+              "subtitle": "Explore fashion trends, modelling tips, photoshoot experiences and lifestyle articles to stay inspired and informed.",
+              "read_more_text": "Read More",
+              "posts": [
+                {
+                  "id": "blog-1",
+                  "slug": "top-fashion-trends-for-models-in-2026",
+                  "title": "Top Fashion Trends for Models in 2026",
+                  "category": "FASHION TRENDS",
+                  "date": "January 12, 2026",
+                  "image": "/blog/hero.webp",
+                  "alt": "Top Fashion Trends for Models in 2026",
+                  "excerpt": "Explore the latest fashion trends that every model should know in 2026, from runway styles to street fashion inspiration."
+                },
+                {
+                  "id": "blog-2",
+                  "slug": "top-7-tips-to-nail-the-perfect-model-profile",
+                  "title": "Top 7 Tips to Nail the Perfect Model Profile",
+                  "category": "MODELLING TIPS",
+                  "date": "January 10, 2026",
+                  "image": "/blog/2.webp",
+                  "alt": "Top 7 Tips to Nail the Perfect Model Profile",
+                  "excerpt": "A complete guide for aspiring models to create a standout profile, build confidence and get noticed by top agencies."
+                },
+                {
+                  "id": "blog-3",
+                  "slug": "behind-the-scenes-a-real-photoshoot-experience",
+                  "title": "Behind the Scenes: A Real Photoshoot Experience",
+                  "category": "PHOTOSHOOT EXPERIENCES",
+                  "date": "January 8, 2026",
+                  "image": "/blog/bts-shoot.webp",
+                  "alt": "Behind the Scenes: A Real Photoshoot Experience",
+                  "excerpt": "Get an exclusive look at a real photoshoot experience, from concept planning to final shots, and what happens behind the camera."
+                },
+                {
+                  "id": "blog-4",
+                  "slug": "a-day-in-the-life-of-a-model",
+                  "title": "A Day in the Life of a Model",
+                  "category": "LIFESTYLE ARTICLES",
+                  "date": "January 5, 2026",
+                  "image": "/blog/4.webp",
+                  "alt": "A Day in the Life of a Model",
+                  "excerpt": "Discover the daily routine, fitness tips, diet plan and lifestyle habits that keep models healthy, confident and camera-ready."
+                },
+                {
+                  "id": "blog-5",
+                  "slug": "seasonal-makeup-trends-every-model-should-try",
+                  "title": "Seasonal Makeup Trends Every Model Should Try",
+                  "category": "FASHION TRENDS",
+                  "date": "January 3, 2026",
+                  "image": "/blog/3.webp",
+                  "alt": "Seasonal Makeup Trends Every Model Should Try",
+                  "excerpt": "From fresh summer looks to bold winter styles, explore seasonal makeup trends that enhance your natural beauty."
+                },
+                {
+                  "id": "blog-6",
+                  "slug": "how-to-build-confidence-as-a-model",
+                  "title": "How to Build Confidence as a Model",
+                  "category": "MODELLING TIPS",
+                  "date": "December 28, 2025",
+                  "image": "/blog/6.webp",
+                  "alt": "How to Build Confidence as a Model",
+                  "excerpt": "Boost your self-confidence with practical tips, mindset strategies and real experiences from successful models."
+                },
+                {
+                  "id": "blog-7",
+                  "slug": "creative-photoshoot-ideas-for-your-portfolio",
+                  "title": "Creative Photoshoot Ideas for Your Portfolio",
+                  "category": "PHOTOSHOOT EXPERIENCES",
+                  "date": "December 25, 2025",
+                  "image": "/blog/7.webp",
+                  "alt": "Creative Photoshoot Ideas for Your Portfolio",
+                  "excerpt": "Discover unique and creative photoshoot ideas to make your portfolio stand out and attract top brands."
+                },
+                {
+                  "id": "blog-8",
+                  "slug": "healthy-lifestyle-tips-for-models",
+                  "title": "Healthy Lifestyle Tips for Models",
+                  "category": "LIFESTYLE ARTICLES",
+                  "date": "December 22, 2025",
+                  "image": "/blog/8.webp",
+                  "alt": "Healthy Lifestyle Tips for Models",
+                  "excerpt": "Simple and effective lifestyle tips including fitness, nutrition and mental well-being to maintain a successful modelling career."
+                }
+              ]
+            },
+            "blog_details": {
+              "how-to-build-a-successful-model-portfolio": {
+                "category": "FASHION TRENDS",
+                "date": "February 26, 2026",
+                "title": "How to Build a Successful Model Portfolio",
+                "hero_image": "/blog/hero.webp",
+                "hero_alt": "How to Build a Successful Model Portfolio - Aanya Sharma",
+                "intro": "A strong model portfolio is your visual resume. It showcases your versatility, unique look and professionalism, helping you get noticed by modelling agencies, photographers and brands. In this blog, we'll explore the essential elements of a great model portfolio and how you can create one that stands out.",
+                "sections": [
+                  {
+                    "number": "1",
+                    "title": "Understand Your Style",
+                    "paragraph": "Before creating your portfolio, it's important to understand your unique style and strengths. Whether it's fashion, commercial, editorial or lifestyle modelling, identify the type of work that best suits your personality and look. This helps in creating a focused portfolio that attracts the right opportunities.",
+                    "images": [
+                      "/blog/style-1.webp",
+                      "/blog/style-2.webp"
+                    ],
+                    "layout": "two-columns"
+                  },
+                  {
+                    "number": "2",
+                    "title": "Work with the Right Professionals",
+                    "paragraph": "Collaborate with experienced photographers, stylists and makeup artists who understand the modelling industry. Professional support ensures high-quality images that highlight your best features and showcase your range in different looks, poses and settings.",
+                    "images": [
+                      "/blog/bts-shoot.webp"
+                    ],
+                    "layout": "full-width"
+                  },
+                  {
+                    "number": "3",
+                    "title": "Include Variety in Your Portfolio",
+                    "paragraph": "A great portfolio should include a mix of close-ups, full-body shots, different outfits, expressions and locations. Show your versatility through casual, formal, traditional and creative looks. This demonstrates your ability to adapt to various modelling assignments.",
+                    "images": [
+                      "/blog/5.webp",
+                      "/blog/1.webp"
+                    ],
+                    "layout": "two-columns"
+                  },
+                  {
+                    "number": "4",
+                    "title": "Keep It Updated",
+                    "paragraph": "Your portfolio should evolve as you gain more experience. Regularly update it with your latest photoshoots, new styles and improved work. An up-to-date portfolio shows that you are active, demonstrable about your career and ready for new opportunities."
+                  }
+                ]
+              },
+              "top-fashion-trends-for-models-in-2026": {
+                "category": "FASHION TRENDS",
+                "date": "January 12, 2026",
+                "title": "Top Fashion Trends for Models in 2026",
+                "hero_image": "/blog/hero.webp",
+                "hero_alt": "Top Fashion Trends for Models in 2026 - Aanya Sharma",
+                "intro": "The international fashion landscape in 2026 emphasizes dramatic silhouettes, sustainable couture fabrics, and fearless self-expression. As models step onto global runways, understanding emerging aesthetics is paramount to delivering commanding performances.",
+                "sections": [
+                  {
+                    "number": "1",
+                    "title": "Sculptural Tailoring & Power Shoulders",
+                    "paragraph": "Exaggerated shoulder pads, nipped waists, and razor-sharp lapels dominate both Paris and Milan runways this season. Models must learn to carry heavy architectural fabrics with fluidity and confident stride.",
+                    "images": [
+                      "/blog/style-2.webp",
+                      "/blog/3.webp"
+                    ],
+                    "layout": "two-columns"
+                  },
+                  {
+                    "number": "2",
+                    "title": "Liquid Metallics & Reflective Textiles",
+                    "paragraph": "From shimmering molten golds to gossamer-thin silks, textures are tactile and reflective under studio strobes. Movement and drape dictate how light cascades across the body.",
+                    "images": [
+                      "/blog/bts-shoot.webp"
+                    ],
+                    "layout": "full-width"
+                  },
+                  {
+                    "number": "3",
+                    "title": "Earth Tones & Botanical Heritage",
+                    "paragraph": "Nature-infused hues and rich heritage palettes bring warmth to Western luxury campaigns. Blending traditional embroideries with clean modern cuts creates timeless allure.",
+                    "images": [
+                      "/blog/2.webp",
+                      "/blog/5.webp"
+                    ],
+                    "layout": "two-columns"
+                  },
+                  {
+                    "number": "4",
+                    "title": "Digital-First Runway Styling",
+                    "paragraph": "With digital fashion weeks and interactive AR presentations, models must understand how garments read on multi-dimensional camera arrays as well as physical viewing galleries."
+                  }
+                ]
+              },
+              "top-7-tips-to-nail-the-perfect-model-profile": {
+                "category": "MODELLING TIPS",
+                "date": "January 10, 2026",
+                "title": "Top 7 Tips to Nail the Perfect Model Profile",
+                "hero_image": "/blog/2.webp",
+                "hero_alt": "Top 7 Tips to Nail the Perfect Model Profile - Aanya Sharma",
+                "intro": "Crafting the perfect model profile requires precision, honesty, and compelling visual hierarchy. Model scouts review thousands of profiles every week; here are the essential strategies to ensure yours commands attention.",
+                "sections": [
+                  {
+                    "number": "1",
+                    "title": "Flawless Daylight Digitals",
+                    "paragraph": "Agencies prioritize natural skin texture, clean bone structure, and unedited symmetry. Shoot in diffuse north-facing morning light in simple black or white swimwear with zero filters.",
+                    "images": [
+                      "/blog/1.webp",
+                      "/blog/4.webp"
+                    ],
+                    "layout": "two-columns"
+                  },
+                  {
+                    "number": "2",
+                    "title": "Rigorous Measurement Precision",
+                    "paragraph": "Always provide current, exact measurements for height, bust, waist, hips, and shoe size. Precision builds industry trust with casting directors and sample room fitters.",
+                    "images": [
+                      "/blog/bts-shoot.webp"
+                    ],
+                    "layout": "full-width"
+                  },
+                  {
+                    "number": "3",
+                    "title": "Curate Contrasting Emotive States",
+                    "paragraph": "Display a balanced composite showcasing high-fashion seriousness alongside accessible commercial warmth. Casting directors need to see your complete range of personality.",
+                    "images": [
+                      "/blog/style-1.webp",
+                      "/blog/6.webp"
+                    ],
+                    "layout": "two-columns"
+                  },
+                  {
+                    "number": "4",
+                    "title": "Professional Digital Comp Card Delivery",
+                    "paragraph": "Host a fast-loading online portfolio with downloadable high-resolution composite cards formatted for instant casting review."
+                  }
+                ]
+              },
+              "behind-the-scenes-a-real-photoshoot-experience": {
+                "category": "PHOTOSHOOT EXPERIENCES",
+                "date": "January 8, 2026",
+                "title": "Behind the Scenes: A Real Photoshoot Experience",
+                "hero_image": "/blog/bts-shoot.webp",
+                "hero_alt": "Behind the Scenes: A Real Photoshoot Experience - Aanya Sharma",
+                "intro": "Step inside an international editorial production with Aanya Sharma. From the crack of dawn call sheets to wardrobe styling, discover the meticulous teamwork behind iconic campaign visuals.",
+                "sections": [
+                  {
+                    "number": "1",
+                    "title": "5:00 AM Call Sheet & Wardrobe Fitting",
+                    "paragraph": "The morning starts in the styling suite where creative directors review moodboards and master tailoring adjustments before hair and makeup begin.",
+                    "images": [
+                      "/blog/style-1.webp",
+                      "/blog/3.webp"
+                    ],
+                    "layout": "two-columns"
+                  },
+                  {
+                    "number": "2",
+                    "title": "Lighting Mastery & Parabolic Modifiers",
+                    "paragraph": "Balancing ambient daylight with large parabolic softboxes requires patience and micro-adjustments. Great shoots are an intimate dance between lens, light, and model.",
+                    "images": [
+                      "/blog/bts-shoot.webp"
+                    ],
+                    "layout": "full-width"
+                  },
+                  {
+                    "number": "3",
+                    "title": "Capturing the Decisive Editorial Frame",
+                    "paragraph": "Finding the magical synchronicity between movement, wind machines, and shutter clicks often happens in split-second bursts of focused creative energy.",
+                    "images": [
+                      "/blog/5.webp",
+                      "/blog/7.webp"
+                    ],
+                    "layout": "two-columns"
+                  },
+                  {
+                    "number": "4",
+                    "title": "Post-Shoot Selection & Wrap",
+                    "paragraph": "Reviewing raw tethered captures on high-fidelity monitors with the client ensures every creative milestone was achieved before calling wrap."
+                  }
+                ]
+              },
+              "a-day-in-the-life-of-a-model": {
+                "category": "LIFESTYLE ARTICLES",
+                "date": "January 5, 2026",
+                "title": "A Day in the Life of a Model",
+                "hero_image": "/blog/4.webp",
+                "hero_alt": "A Day in the Life of a Model - Aanya Sharma",
+                "intro": "Behind the glamour of runway shows lies rigorous discipline, physical conditioning, and mental resilience. Here is an authentic look at how Aanya Sharma balances her demanding schedule.",
+                "sections": [
+                  {
+                    "number": "1",
+                    "title": "Morning Grounding & Breathwork",
+                    "paragraph": "Waking up at 6:00 AM, hydration with warm lemon water, followed by 30 minutes of low-impact Pilates and breathwork sets an unshakeable foundation for the day.",
+                    "images": [
+                      "/blog/1.webp",
+                      "/blog/6.webp"
+                    ],
+                    "layout": "two-columns"
+                  },
+                  {
+                    "number": "2",
+                    "title": "Clean Nutrition On The Move",
+                    "paragraph": "Preparing balanced, nutrient-dense meals rich in healthy fats, leafy greens, and lean proteins sustains stamina through long 10-hour studio days.",
+                    "images": [
+                      "/blog/bts-shoot.webp"
+                    ],
+                    "layout": "full-width"
+                  },
+                  {
+                    "number": "3",
+                    "title": "Casting Rounds & Agency Check-Ins",
+                    "paragraph": "Afternoon casting go-sees across Manhattan demand poise, adaptability, and effortless conversational charisma across multiple high-stakes rooms.",
+                    "images": [
+                      "/blog/style-1.webp",
+                      "/blog/style-2.webp"
+                    ],
+                    "layout": "two-columns"
+                  },
+                  {
+                    "number": "4",
+                    "title": "Evening Barrier Repair Skincare",
+                    "paragraph": "Removing heavy shoot makeup thoroughly using double-cleansing oils and peptide sleeping masks restores skin vitality overnight."
+                  }
+                ]
+              },
+              "seasonal-makeup-trends-every-model-should-try": {
+                "category": "FASHION TRENDS",
+                "date": "January 3, 2026",
+                "title": "Seasonal Makeup Trends Every Model Should Try",
+                "hero_image": "/blog/3.webp",
+                "hero_alt": "Seasonal Makeup Trends Every Model Should Try - Aanya Sharma",
+                "intro": "Editorial makeup is moving away from heavy matte powders toward dimensional, skin-first finishes that celebrate genuine texture and sculpted natural bone contours.",
+                "sections": [
+                  {
+                    "number": "1",
+                    "title": "Glazed Glass Skin & Serum Bases",
+                    "paragraph": "Lightweight tinted serums infused with hyaluronic acid catch studio strobes naturally, giving models an ethereal dewy radiance that requires minimal retouching.",
+                    "images": [
+                      "/blog/1.webp",
+                      "/blog/2.webp"
+                    ],
+                    "layout": "two-columns"
+                  },
+                  {
+                    "number": "2",
+                    "title": "Sunset Terracotta & Amber Flush",
+                    "paragraph": "Sweeping warm amber and terracotta tones high onto the cheekbones and across the bridge of the nose creates an effortless, sun-drenched editorial flush.",
+                    "images": [
+                      "/blog/bts-shoot.webp"
+                    ],
+                    "layout": "full-width"
+                  },
+                  {
+                    "number": "3",
+                    "title": "Feathery Brows & Soft Velvet Lips",
+                    "paragraph": "Natural laminated brow textures paired with softly blurred berry-stained lips strike the perfect balance between high-fashion sophistication and youthful freshness.",
+                    "images": [
+                      "/blog/4.webp",
+                      "/blog/7.webp"
+                    ],
+                    "layout": "two-columns"
+                  },
+                  {
+                    "number": "4",
+                    "title": "Skin Prep as the Ultimate Primer",
+                    "paragraph": "No makeup looks flawless without diligent lymphatic drainage facial massage and deep moisture layering prior to application."
+                  }
+                ]
+              },
+              "how-to-build-confidence-as-a-model": {
+                "category": "MODELLING TIPS",
+                "date": "December 28, 2025",
+                "title": "How to Build Confidence as a Model",
+                "hero_image": "/blog/6.webp",
+                "hero_alt": "How to Build Confidence as a Model - Aanya Sharma",
+                "intro": "Confidence is not something you are born with; it is an active discipline developed through self-awareness, posture alignment, and embracing rejection as redirection.",
+                "sections": [
+                  {
+                    "number": "1",
+                    "title": "Own Your Unique Physicality",
+                    "paragraph": "In an industry full of conventional standards, your idiosyncratic features—whether your nose, height, or gaze—are your most lucrative commercial signatures.",
+                    "images": [
+                      "/blog/style-2.webp",
+                      "/blog/8.webp"
+                    ],
+                    "layout": "two-columns"
+                  },
+                  {
+                    "number": "2",
+                    "title": "Master Mirror Movement Practice",
+                    "paragraph": "Spend dedicated time studying your angles, micro-expressions, and how slight chin tilts dramatically alter the mood and intensity of a portrait.",
+                    "images": [
+                      "/blog/bts-shoot.webp"
+                    ],
+                    "layout": "full-width"
+                  },
+                  {
+                    "number": "3",
+                    "title": "Develop Mental Fortitude for Castings",
+                    "paragraph": "Remember that casting decisions hinge on specific client briefs, not your inherent worth. Approach every audition as a joyful opportunity to perform.",
+                    "images": [
+                      "/blog/3.webp",
+                      "/blog/1.webp"
+                    ],
+                    "layout": "two-columns"
+                  },
+                  {
+                    "number": "4",
+                    "title": "Channel Kinetic Energy into the Lens",
+                    "paragraph": "When the camera fires, project internal dialogue and emotion through your eyes rather than simply freezing in a mechanical pose."
+                  }
+                ]
+              },
+              "creative-photoshoot-ideas-for-your-portfolio": {
+                "category": "PHOTOSHOOT EXPERIENCES",
+                "date": "December 25, 2025",
+                "title": "Creative Photoshoot Ideas for Your Portfolio",
+                "hero_image": "/blog/7.webp",
+                "hero_alt": "Creative Photoshoot Ideas for Your Portfolio - Aanya Sharma",
+                "intro": "Transform a standard modeling book into an unforgettable visual narrative by experimenting with conceptual lighting, architectural staging, and emotive storytelling.",
+                "sections": [
+                  {
+                    "number": "1",
+                    "title": "High-Contrast Cinematic Noir",
+                    "paragraph": "Utilize single-point tungsten lighting and dramatic Venetian blind shadows to channel classic 1940s film noir drama and intense psychological depth.",
+                    "images": [
+                      "/blog/3.webp",
+                      "/blog/style-2.webp"
+                    ],
+                    "layout": "two-columns"
+                  },
+                  {
+                    "number": "2",
+                    "title": "Architectural Geometric Minimalism",
+                    "paragraph": "Pair structured oversized blazers with brutalist concrete facades. Contrasting organic human forms against rigid geometric lines creates striking cover-worthy imagery.",
+                    "images": [
+                      "/blog/bts-shoot.webp"
+                    ],
+                    "layout": "full-width"
+                  },
+                  {
+                    "number": "3",
+                    "title": "Surrealist Floral & Fabric Drape",
+                    "paragraph": "Incorporate cascading sheer tulles, fresh botanical arrangements, and unconventional camera angles to infuse whimsical haute couture romance.",
+                    "images": [
+                      "/blog/1.webp",
+                      "/blog/5.webp"
+                    ],
+                    "layout": "two-columns"
+                  },
+                  {
+                    "number": "4",
+                    "title": "Motion Blur & City Candids",
+                    "paragraph": "Slow shutter speeds capturing blurred city lights around a sharp, still model evoke modern metropolitan luxury and dynamic pace."
+                  }
+                ]
+              },
+              "healthy-lifestyle-tips-for-models": {
+                "category": "LIFESTYLE ARTICLES",
+                "date": "December 22, 2025",
+                "title": "Healthy Lifestyle Tips for Models",
+                "hero_image": "/blog/8.webp",
+                "hero_alt": "Healthy Lifestyle Tips for Models - Aanya Sharma",
+                "intro": "A sustainable career in high fashion is built on holistic wellness. Balancing restorative sleep, anti-inflammatory nutrition, and mental health ensures peak performance on set.",
+                "sections": [
+                  {
+                    "number": "1",
+                    "title": "Prioritize Circadian Rhythm & Sleep",
+                    "paragraph": "Deep restorative sleep between 10 PM and 6 AM optimizes cellular repair, minimizes cortisol production, and naturally prevents under-eye puffiness.",
+                    "images": [
+                      "/blog/4.webp",
+                      "/blog/6.webp"
+                    ],
+                    "layout": "two-columns"
+                  },
+                  {
+                    "number": "2",
+                    "title": "Anti-Inflammatory Nutrient Density",
+                    "paragraph": "Incorporate antioxidant-rich berries, leafy cruciferous vegetables, omega-3 fatty acids, and collagen-boosting broths to keep skin glowing from within.",
+                    "images": [
+                      "/blog/bts-shoot.webp"
+                    ],
+                    "layout": "full-width"
+                  },
+                  {
+                    "number": "3",
+                    "title": "Low-Impact Strength & Lengthening",
+                    "paragraph": "Reformer Pilates, barre conditioning, and swimming elongate muscle lines while cultivating core stability and effortless posture on high-heel runways.",
+                    "images": [
+                      "/blog/style-1.webp",
+                      "/blog/5.webp"
+                    ],
+                    "layout": "two-columns"
+                  },
+                  {
+                    "number": "4",
+                    "title": "Digital Detox & Emotional Grounding",
+                    "paragraph": "Carve out phone-free hours each evening to decompress from social media pressures and maintain healthy creative perspective."
+                  }
+                ]
+              }
+            },
+            "contact": {
+              "eyebrow": "SEND US A MESSAGE",
+              "title": "Let's Work Together",
+              "description_paragraphs": [
+                "Fill out the form below and we'll get back to you as soon as possible.",
+                "We are always excited to connect with new people and opportunities."
+              ],
+              "image": "/contact/contact.webp",
+              "image_alt": "Aanya Sharma fashion model looking over shoulder in black dress",
+              "form": {
+                "name_label": "Full Name *",
+                "name_placeholder": "Your Name",
+                "email_label": "Email Address *",
+                "email_placeholder": "Your Email",
+                "phone_label": "Phone Number",
+                "phone_placeholder": "Your Phone Number",
+                "subject_label": "Subject *",
+                "subject_placeholder": "Select Subject",
+                "subject_options": [
+                  "Fashion Modelling",
+                  "Brand Campaign",
+                  "Commercial Shoot",
+                  "Editorial & Magazine",
+                  "Runway Show",
+                  "Other Inquiry"
+                ],
+                "message_label": "Message *",
+                "message_placeholder": "Your Message",
+                "submit_text": "SEND MESSAGE",
+                "subject_error_message": "Please select a subject",
+                "success_message": "Thank you! Your message has been sent successfully. We will get back to you soon."
+              },
+              "info_cards": [
+                {
+                  "id": "location",
+                  "icon": "map-pin",
+                  "title": "Our Location",
+                  "lines": [
+                    "123 Education Lane,",
+                    "New York, NY 10001"
+                  ],
+                  "href": "https://maps.google.com/?q=123+Education+Lane,+New+York,+NY+10001"
+                },
+                {
+                  "id": "phone",
+                  "icon": "phone",
+                  "title": "Call Us",
+                  "lines": [
+                    "+100000000000",
+                    "Mon - Sat, 10:00 AM - 7:00 PM"
+                  ],
+                  "href": "tel:+100000000000"
+                },
+                {
+                  "id": "email",
+                  "icon": "mail",
+                  "title": "Email Us",
+                  "lines": [
+                    "info@xyz.com",
+                    "We reply within 24 hours"
+                  ],
+                  "href": "mailto:info@xyz.com"
+                }
+              ],
+              "map": {
+                "title": "123 Education Lane, New York, NY 10001",
+                "embed_url": "https://maps.google.com/maps?q=123+Education+Lane,+New+York,+NY+10001&t=&z=14&ie=UTF8&iwloc=&output=embed"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
