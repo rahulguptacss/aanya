@@ -35,6 +35,16 @@ export default function Header({ data }: HeaderProps) {
     };
   }, [isOpen]);
 
+  // Close menu on Escape key press
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
   return (
     <>
       <header
@@ -63,6 +73,7 @@ export default function Header({ data }: HeaderProps) {
                 alt={data.logo_text}
                 fill
                 priority
+                sizes="(max-width: 640px) 208px, (max-width: 768px) 256px, 320px"
                 className="object-contain object-left"
               />
             </div>
@@ -73,14 +84,15 @@ export default function Header({ data }: HeaderProps) {
             type="button"
             onClick={() => setIsOpen(true)}
             aria-label={data.menu_aria_label}
-            className={`rounded-full bg-black/25 backdrop-blur-sm flex items-center justify-center text-white hover:border-[#c59b5f] hover:text-[#c59b5f] transition-all duration-300 active:scale-95 cursor-pointer shadow-lg ${
+            aria-expanded={isOpen}
+            className={`rounded-full bg-black/35 backdrop-blur-sm flex items-center justify-center text-white hover:border-[#c59b5f] hover:text-[#c59b5f] transition-all duration-200 active:scale-95 cursor-pointer shadow-lg ${
               isScrolled
                 ? 'w-10 h-10 sm:w-11 sm:h-11 border border-white/70'
                 : 'w-12 h-12 sm:w-14 sm:h-14 border-2 border-white/80'
             }`}
           >
             <Menu
-              className={`stroke-[2] transition-all duration-300 ${
+              className={`stroke-[2] transition-all duration-200 ${
                 isScrolled ? 'w-5 h-5 sm:w-5.5 sm:h-5.5' : 'w-6 h-6 sm:w-7 sm:h-7'
               }`}
             />
@@ -88,15 +100,15 @@ export default function Header({ data }: HeaderProps) {
         </div>
       </header>
 
-      {/* Full-Screen Luxury Menu Overlay */}
+      {/* Full-Screen Luxury Menu Overlay - 100% GPU-accelerated and smooth */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-xl flex flex-col justify-between p-8 sm:p-12 lg:p-16"
+            transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-50 bg-[#0c0b0a] flex flex-col justify-between p-6 sm:p-10 lg:p-14 overflow-hidden select-none will-change-transform"
           >
             {/* Top Bar inside Menu */}
             <div className="flex items-center justify-between max-w-7xl w-full mx-auto">
@@ -105,6 +117,7 @@ export default function Header({ data }: HeaderProps) {
                   src={data.logo}
                   alt={data.logo_text}
                   fill
+                  sizes="(max-width: 640px) 208px, (max-width: 768px) 256px, 320px"
                   className="object-contain object-left"
                 />
               </div>
@@ -112,29 +125,36 @@ export default function Header({ data }: HeaderProps) {
                 type="button"
                 onClick={() => setIsOpen(false)}
                 aria-label={data.close_aria_label}
-                className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center text-white hover:border-[#c59b5f] hover:text-[#c59b5f] transition-all duration-200 cursor-pointer"
+                className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center text-white hover:border-[#c59b5f] hover:text-[#c59b5f] transition-all duration-200 cursor-pointer active:scale-95"
               >
                 <X className="w-6 h-6 stroke-[1.8]" />
               </button>
             </div>
 
             {/* Menu Links */}
-            <div className="max-w-7xl w-full mx-auto my-auto py-8">
-              <nav className="flex flex-col space-y-4 sm:space-y-6">
+            <div className="max-w-7xl w-full mx-auto my-auto py-6">
+              <nav className="flex flex-col space-y-3 sm:space-y-5">
                 {data.links.map((link, idx) => (
                   <motion.div
                     key={link.name}
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.08 * idx, duration: 0.35 }}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{
+                      delay: 0.04 + idx * 0.04,
+                      duration: 0.28,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
                   >
                     <Link
                       href={link.href}
                       onClick={() => setIsOpen(false)}
-                      className="group flex items-center justify-between text-3xl sm:text-5xl md:text-6xl font-serif text-white hover:text-[#c59b5f] transition-colors duration-300 py-1"
+                      className="group flex items-center justify-between text-3xl sm:text-5xl md:text-6xl font-serif text-white hover:text-[#c59b5f] transition-colors duration-200 py-1"
                     >
-                      <span>{link.name}</span>
-                      <ArrowRight className="w-6 h-6 sm:w-8 sm:h-8 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#c59b5f]" />
+                      <span className="transition-transform duration-200 group-hover:translate-x-2">
+                        {link.name}
+                      </span>
+                      <ArrowRight className="w-6 h-6 sm:w-8 sm:h-8 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 text-[#c59b5f]" />
                     </Link>
                   </motion.div>
                 ))}

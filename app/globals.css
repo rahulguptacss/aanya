@@ -21,6 +21,7 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -60,13 +61,13 @@ button,
   button,
   [role="button"],
   .cursor-pointer {
-    cursor: none !important;
+    cursor: none;
   }
 
   input,
   textarea,
   select {
-    cursor: auto !important;
+    cursor: auto;
   }
 }
 

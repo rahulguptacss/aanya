@@ -21,7 +21,7 @@ export default function Portfolio({
   showReadMore = false,
 }: PortfolioProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>(data.all_category_label);
-  
+
   const defaultCount = useMemo(() => {
     return initialCount ?? (showReadMore ? (data.portfolio_page_count ?? 15) : (data.homepage_count ?? 5));
   }, [initialCount, showReadMore, data.portfolio_page_count, data.homepage_count]);
@@ -108,11 +108,10 @@ export default function Portfolio({
                 key={cat}
                 type="button"
                 onClick={() => handleCategoryChange(cat)}
-                className={`px-4 sm:px-5 py-1.5 rounded-full text-xs tracking-wider transition-all duration-200 cursor-pointer ${
-                  isActive
+                className={`px-4 sm:px-5 py-1.5 rounded-full text-xs tracking-wider transition-all duration-200 cursor-pointer ${isActive
                     ? 'bg-[#8d7352] text-white shadow-sm font-medium'
                     : 'bg-[#f6f3ed] text-[#55524e] hover:bg-[#eae4d8] hover:text-[#111111]'
-                }`}
+                  }`}
               >
                 {cat}
               </button>
@@ -152,7 +151,6 @@ export default function Portfolio({
                 className={`group relative aspect-[3/4.2] w-full overflow-hidden bg-[#e8e2d8] shadow-md shadow-black/5 ${
                   enableLightbox ? 'cursor-pointer' : ''
                 }`}
-                {...(enableLightbox ? { 'data-cursor': 'VIEW' } : {})}
               >
                 {/* Image */}
                 <Image

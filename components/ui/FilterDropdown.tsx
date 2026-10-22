@@ -52,11 +52,10 @@ export default function FilterDropdown({
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         aria-controls={listId}
-        className={`w-full flex items-center gap-2.5 rounded-full bg-white border pl-4 pr-3.5 py-2.5 text-left transition-all duration-200 shadow-sm ${
-          isOpen
+        className={`w-full flex items-center gap-2.5 rounded-full bg-white border pl-4 pr-3.5 py-2.5 text-left transition-all duration-200 shadow-sm ${isOpen
             ? 'border-[#c59b5f] ring-2 ring-[#c59b5f]/20'
             : 'border-[#e5e0d8] hover:border-[#c59b5f]'
-        }`}
+          }`}
       >
         <SlidersHorizontal className="w-4 h-4 text-[#c59b5f] shrink-0" />
         <span className="flex-1 truncate text-[14px] font-medium text-[#111111]">{value}</span>
@@ -91,11 +90,10 @@ export default function FilterDropdown({
                       onChange(opt);
                       setIsOpen(false);
                     }}
-                    className={`w-full flex items-center justify-between gap-3 px-3.5 py-2.5 text-[14px] rounded-[10px] text-left transition-colors duration-150 ${
-                      isSelected
+                    className={`w-full flex items-center justify-between gap-3 px-3.5 py-2.5 text-[14px] rounded-[10px] text-left transition-colors duration-150 ${isSelected
                         ? 'bg-[#8d7352] text-white font-semibold'
                         : 'text-[#111111] hover:bg-[#8d7352]/10 active:bg-[#8d7352]/15'
-                    }`}
+                      }`}
                   >
                     <span className="truncate">{opt}</span>
                     {isSelected && <Check className="w-4 h-4 shrink-0" />}

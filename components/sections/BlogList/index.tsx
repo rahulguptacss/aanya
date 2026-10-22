@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import type { BlogListSectionData } from '../../types';
 
@@ -29,29 +29,44 @@ export default function BlogList({ data }: BlogListProps) {
   };
 
   return (
-    <section id="blog-list-section" className="relative w-full bg-[#fdfbf7] pt-6 sm:pt-8 lg:pt-10 pb-10 sm:pb-14 lg:pb-16 text-[#111111]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header matching screenshot */}
+    <section id="blog-list-section" className="relative w-full bg-[#fdfbf7] pt-6 sm:pt-8 lg:pt-10 pb-12 sm:pb-16 lg:pb-20 text-[#111111] overflow-hidden">
+      {/* Subtle luxury ambient glow in background */}
+      <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[720px] h-[340px] bg-gradient-to-b from-[#c59b5f]/[0.05] via-[#c59b5f]/[0.02] to-transparent rounded-full blur-3xl pointer-events-none" />
+
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header with animated gold lines & reveal */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-6 sm:mb-8"
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-7 sm:mb-10"
         >
-          {/* Eyebrow with gold divider lines */}
-          <div className="flex items-center justify-center gap-3 sm:gap-4 mb-1.5">
-            <span className="w-10 sm:w-16 h-[1px] bg-[#c59b5f]/70" />
+          {/* Eyebrow with expanding gold divider lines */}
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mb-2">
+            <motion.span
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="w-10 sm:w-16 h-[1px] bg-[#c59b5f]/70 origin-right"
+            />
             <span className="text-[11px] sm:text-[13px] tracking-[0.3em] uppercase text-[#c59b5f] font-medium">
               {data.eyebrow}
             </span>
-            <span className="w-10 sm:w-16 h-[1px] bg-[#c59b5f]/70" />
+            <motion.span
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="w-10 sm:w-16 h-[1px] bg-[#c59b5f]/70 origin-left"
+            />
           </div>
 
           {/* Heading with italic gold highlight */}
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-[#1e1b18] mb-2">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-[#1e1b18] mb-2.5">
             <span>{data.title_regular}</span>
-            <span className="italic font-serif text-[#b88a44] ml-1.5">
+            <span className="italic font-serif text-[#b88a44] ml-2">
               {data.title_highlight}
             </span>
           </h2>
@@ -62,125 +77,142 @@ export default function BlogList({ data }: BlogListProps) {
           </p>
         </motion.div>
 
-        {/* 2-Column Grid of Blog Cards matching screenshot */}
-        <div key={`page-${currentPage}`} className="grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-8 sm:gap-y-10">
-          {visiblePosts.map((post, idx) => (
-            <motion.article
-              key={post.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: idx * 0.06,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="group flex flex-col"
-            >
-              {/* Image Frame */}
-              <Link
-                href={`/blog/${post.slug}`}
-                className="relative aspect-[16/10] w-full overflow-hidden bg-[#e8e2d8] shadow-sm block"
+        {/* 2-Column Grid of Blog Cards with AnimatePresence Page Transition */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`blog-page-${currentPage}`}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-9 sm:gap-y-12"
+          >
+            {visiblePosts.map((post, idx) => (
+              <motion.article
+                key={post.id}
+                initial={{ opacity: 0, y: 32 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.55,
+                  delay: idx * 0.07,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                whileHover={{ y: -4 }}
+                className="group flex flex-col transition-transform duration-300"
               >
-                <Image
-                  src={post.image}
-                  alt={post.alt || post.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority={idx < 2}
-                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 pointer-events-none" />
-              </Link>
-
-              {/* Content Body matching screenshot */}
-              <div className="pt-4 sm:pt-4.5 flex flex-col flex-1">
-                {/* Meta Row: Star + Category (left) | Date (right) with subtle border divider */}
-                <div className="flex items-center justify-between text-xs pb-3 border-b border-black/[0.08] mb-3.5">
-                  <span className="inline-flex items-center gap-1.5 uppercase tracking-[0.16em] font-semibold text-[#a07844] text-[11px] sm:text-xs">
-                    <Star className="w-3.5 h-3.5 fill-[#a07844] text-[#a07844]" />
-                    <span>{post.category}</span>
-                  </span>
-                  <time className="text-[#77726b] text-xs font-normal">
-                    {post.date}
-                  </time>
-                </div>
-
-                {/* Title in Serif Italic */}
-                <h3 className="font-serif italic font-normal text-2xl sm:text-[26px] md:text-[28px] text-[#1c1917] group-hover:text-[#a07844] transition-colors duration-200 line-clamp-2 leading-[1.25] tracking-tight mb-3">
-                  <Link href={`/blog/${post.slug}`}>
-                    {post.title}
-                  </Link>
-                </h3>
-
-                {/* Excerpt */}
-                <p className="text-[13.5px] sm:text-sm text-[#6b665f] leading-[1.65] line-clamp-3 mb-4 flex-1">
-                  {post.excerpt}
-                </p>
-
-                {/* Read More Button matching screenshot */}
+                {/* Image Frame with Shimmer & Zoom */}
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="group/btn inline-flex items-center gap-2.5 self-start text-[13.5px] sm:text-sm font-semibold text-[#5c4327] hover:text-[#a07844] transition-colors pt-0.5"
+                  className="relative aspect-[16/10] w-full overflow-hidden bg-[#e8e2d8] shadow-sm rounded-[2px] block group-hover:shadow-md transition-shadow duration-300"
                 >
-                  <span>{data.read_more_text || 'Read More'}</span>
-                  <span className="w-[26px] h-[26px] rounded-full bg-[#946b38] text-white flex items-center justify-center transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:bg-[#a6773e] shrink-0">
-                    <ChevronRight className="w-3.5 h-3.5 stroke-[2.5]" />
-                  </span>
+                  <Image
+                    src={post.image}
+                    alt={post.alt || post.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority={idx < 2}
+                    className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                  />
+                  {/* Luxury soft dark overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none" />
                 </Link>
-              </div>
-            </motion.article>
-          ))}
-        </div>
 
-        {/* Pagination matching screenshot with Prev and Next */}
-        <div className="mt-8 sm:mt-10 flex items-center justify-center gap-2">
+                {/* Content Body */}
+                <div className="pt-4 sm:pt-4.5 flex flex-col flex-1">
+                  {/* Meta Row: Star + Category | Date */}
+                  <div className="flex items-center justify-between text-xs pb-3 border-b border-black/[0.08] mb-3.5">
+                    <span className="inline-flex items-center gap-1.5 uppercase tracking-[0.16em] font-semibold text-[#a07844] text-[11px] sm:text-xs transition-colors duration-200 group-hover:text-[#8a6130]">
+                      <Star className="w-3.5 h-3.5 fill-[#a07844] text-[#a07844] transition-transform duration-300 group-hover:scale-110" />
+                      <span>{post.category}</span>
+                    </span>
+                    <time className="text-[#77726b] text-xs font-normal">
+                      {post.date}
+                    </time>
+                  </div>
+
+                  {/* Title in Serif Italic */}
+                  <h3 className="font-serif italic font-normal text-2xl sm:text-[26px] md:text-[28px] text-[#1c1917] group-hover:text-[#a07844] transition-colors duration-200 line-clamp-2 leading-[1.25] tracking-tight mb-3">
+                    <Link href={`/blog/${post.slug}`}>
+                      {post.title}
+                    </Link>
+                  </h3>
+
+                  {/* Excerpt */}
+                  <p className="text-[13.5px] sm:text-sm text-[#6b665f] leading-[1.65] line-clamp-3 mb-4 flex-1">
+                    {post.excerpt}
+                  </p>
+
+                  {/* Read More Button with Smooth Arrow Slide */}
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="group/btn inline-flex items-center gap-2.5 self-start text-[13.5px] sm:text-sm font-semibold text-[#5c4327] hover:text-[#a07844] transition-colors pt-0.5"
+                  >
+                    <span>{data.read_more_text || 'Read More'}</span>
+                    <span className="w-[26px] h-[26px] rounded-full bg-[#946b38] text-white flex items-center justify-center transition-all duration-300 group-hover/btn:translate-x-1.5 group-hover/btn:bg-[#a6773e] group-hover/btn:shadow-[0_2px_8px_rgba(166,119,62,0.4)] shrink-0">
+                      <ChevronRight className="w-3.5 h-3.5 stroke-[2.5] transition-transform duration-200 group-hover/btn:translate-x-0.5" />
+                    </span>
+                  </Link>
+                </div>
+              </motion.article>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Pagination with Smooth Micro-Interactions */}
+        <div className="mt-9 sm:mt-12 flex items-center justify-center gap-2">
           {/* Previous Button */}
-          <button
+          <motion.button
             type="button"
             onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
             disabled={currentPage <= 1}
+            whileHover={currentPage > 1 ? { scale: 1.06, y: -1 } : {}}
+            whileTap={currentPage > 1 ? { scale: 0.94 } : {}}
             aria-label="Previous page"
-            className={`w-10 h-10 flex items-center justify-center bg-white text-[#1e1b18] border border-black/15 transition-all duration-200 ${
+            className={`w-10 h-10 flex items-center justify-center bg-white text-[#1e1b18] border border-black/15 transition-all duration-200 rounded-[2px] ${
               currentPage <= 1
                 ? 'opacity-40 cursor-not-allowed'
-                : 'hover:border-[#967040] hover:text-[#967040] cursor-pointer'
+                : 'hover:border-[#967040] hover:text-[#967040] shadow-xs cursor-pointer'
             }`}
           >
             <ChevronLeft className="w-4 h-4" />
-          </button>
+          </motion.button>
 
           {/* Page Number Buttons */}
           {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-            <button
+            <motion.button
               key={page}
               type="button"
               onClick={() => handlePageChange(page)}
+              whileHover={{ scale: 1.06, y: -1 }}
+              whileTap={{ scale: 0.94 }}
               aria-label={`Go to page ${page}`}
               aria-current={currentPage === page ? 'page' : undefined}
-              className={`w-10 h-10 flex items-center justify-center font-medium text-sm transition-all duration-200 cursor-pointer ${
+              className={`w-10 h-10 flex items-center justify-center font-medium text-sm transition-all duration-200 cursor-pointer rounded-[2px] ${
                 currentPage === page
-                  ? 'bg-[#967040] text-white border border-[#967040] shadow-sm'
-                  : 'bg-white text-[#1e1b18] border border-black/15 hover:border-[#967040] hover:text-[#967040]'
+                  ? 'bg-[#967040] text-white border border-[#967040] shadow-md shadow-[#967040]/25'
+                  : 'bg-white text-[#1e1b18] border border-black/15 hover:border-[#967040] hover:text-[#967040] shadow-xs'
               }`}
             >
               {page}
-            </button>
+            </motion.button>
           ))}
 
           {/* Next Button */}
-          <button
+          <motion.button
             type="button"
             onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
             disabled={currentPage >= totalPages}
+            whileHover={currentPage < totalPages ? { scale: 1.06, y: -1 } : {}}
+            whileTap={currentPage < totalPages ? { scale: 0.94 } : {}}
             aria-label="Next page"
-            className={`w-10 h-10 flex items-center justify-center bg-white text-[#1e1b18] border border-black/15 transition-all duration-200 ${
+            className={`w-10 h-10 flex items-center justify-center bg-white text-[#1e1b18] border border-black/15 transition-all duration-200 rounded-[2px] ${
               currentPage >= totalPages
                 ? 'opacity-40 cursor-not-allowed'
-                : 'hover:border-[#967040] hover:text-[#967040] cursor-pointer'
+                : 'hover:border-[#967040] hover:text-[#967040] shadow-xs cursor-pointer'
             }`}
           >
             <ChevronRight className="w-4 h-4" />
-          </button>
+          </motion.button>
         </div>
       </div>
     </section>

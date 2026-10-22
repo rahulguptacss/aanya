@@ -315,22 +315,19 @@ export default function Contact({ data }: ContactProps) {
                       <button
                         type="button"
                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                        className={`w-full pl-10 pr-9 h-[48px] sm:h-[46px] bg-white border ${
-                          subjectError ? 'border-red-400' : 'border-[#e2ded9]'
-                        } rounded-[3px] text-[15px] sm:text-sm text-left flex items-center justify-between focus:outline-none focus:border-[#a07442] focus:ring-2 focus:ring-[#a07442]/15 transition-all cursor-pointer`}
+                        className={`w-full pl-10 pr-9 h-[48px] sm:h-[46px] bg-white border ${subjectError ? 'border-red-400' : 'border-[#e2ded9]'
+                          } rounded-[3px] text-[15px] sm:text-sm text-left flex items-center justify-between focus:outline-none focus:border-[#a07442] focus:ring-2 focus:ring-[#a07442]/15 transition-all cursor-pointer`}
                       >
                         <FileText className="w-4 h-4 text-[#a07442] stroke-[1.75] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                         <span
-                          className={`truncate ${
-                            formData.subject ? 'text-[#1e1b18] font-normal' : 'text-[#a39d94]'
-                          }`}
+                          className={`truncate ${formData.subject ? 'text-[#1e1b18] font-normal' : 'text-[#a39d94]'
+                            }`}
                         >
                           {formData.subject || data.form.subject_placeholder}
                         </span>
                         <ChevronDown
-                          className={`w-4 h-4 text-[#736e67] absolute right-3.5 top-1/2 -translate-y-1/2 transition-transform duration-200 pointer-events-none ${
-                            isDropdownOpen ? 'rotate-180 text-[#a07442]' : ''
-                          }`}
+                          className={`w-4 h-4 text-[#736e67] absolute right-3.5 top-1/2 -translate-y-1/2 transition-transform duration-200 pointer-events-none ${isDropdownOpen ? 'rotate-180 text-[#a07442]' : ''
+                            }`}
                         />
                       </button>
 
@@ -351,11 +348,10 @@ export default function Contact({ data }: ContactProps) {
                                   type="button"
                                   key={idx}
                                   onClick={() => handleSelectSubject(option)}
-                                  className={`w-full text-left px-4 py-2.5 text-xs sm:text-sm flex items-center justify-between transition-colors duration-150 cursor-pointer ${
-                                    isSelected
+                                  className={`w-full text-left px-4 py-2.5 text-xs sm:text-sm flex items-center justify-between transition-colors duration-150 cursor-pointer ${isSelected
                                       ? 'bg-[#fbf9f5] text-[#a07442] font-medium'
                                       : 'text-[#2b2723] hover:bg-[#fbf9f5] hover:text-[#a07442]'
-                                  }`}
+                                    }`}
                                 >
                                   <span>{option}</span>
                                   {isSelected && <Check className="w-4 h-4 text-[#a07442] shrink-0" />}

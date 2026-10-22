@@ -1,151 +1,199 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 
 export default function CustomCursor() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
-  const [isOverInput, setIsOverInput] = useState(false);
-  const [cursorText, setCursorText] = useState('');
-  const [isTouchDevice, setIsTouchDevice] = useState(true);
-
-  // Exact mouse position
-  const mouseX = useMotionValue(-100);
-  const mouseY = useMotionValue(-100);
-
-  // Smooth spring physics for outer luxury follower
-  const springConfig = { damping: 28, stiffness: 320, mass: 0.5 };
-  const smoothX = useSpring(mouseX, springConfig);
-  const smoothY = useSpring(mouseY, springConfig);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+  const ringInnerRef = useRef<HTMLDivElement>(null);
+  const dotInnerRef = useRef<HTMLDivElement>(null);
+  const badgeRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    // Check if client device has a fine pointer (mouse/trackpad, not touch)
+    // Only enable on desktop devices with fine pointer (mouse/trackpad)
     if (typeof window === 'undefined') return;
-    const finePointer = window.matchMedia('(pointer: fine)').matches;
-    if (!finePointer) {
-      setIsTouchDevice(true);
-      return;
-    }
-    setIsTouchDevice(false);
+    const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+    if (!isFinePointer) return;
 
-    let hasInitialized = false;
+    const dot = dotRef.current;
+    const ring = ringRef.current;
+    const ringInner = ringInnerRef.current;
+    const dotInner = dotInnerRef.current;
+    const badge = badgeRef.current;
+    if (!dot || !ring || !ringInner || !dotInner) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!hasInitialized) {
-        mouseX.set(e.clientX);
-        mouseY.set(e.clientY);
-        smoothX.jump(e.clientX);
-        smoothY.jump(e.clientY);
-        hasInitialized = true;
-        setIsVisible(true);
+    let mouseX = -100;
+    let mouseY = -100;
+    let ringX = -100;
+    let ringY = -100;
+    let isVisible = false;
+    let isHovered = false;
+    let isClicked = false;
+    let hasCustomText = false;
+    let rafId: number;
+
+    const updateVisualState = () => {
+      if (isClicked) {
+        ringInner.style.transform = hasCustomText ? 'scale(1.5)' : isHovered ? 'scale(1.2)' : 'scale(0.85)';
+        dotInner.style.transform = 'scale(0.5)';
+      } else if (hasCustomText) {
+        ringInner.style.transform = 'scale(1.8)';
+        ringInner.style.borderColor = '#c59b5f';
+        ringInner.style.backgroundColor = 'rgba(197, 155, 95, 0.18)';
+        dotInner.style.transform = 'scale(0)';
+      } else if (isHovered) {
+        ringInner.style.transform = 'scale(1.35)';
+        ringInner.style.borderColor = '#c59b5f';
+        ringInner.style.backgroundColor = 'rgba(197, 155, 95, 0.12)';
+        dotInner.style.transform = 'scale(0.6)';
       } else {
-        mouseX.set(e.clientX);
-        mouseY.set(e.clientY);
-        if (!isVisible) setIsVisible(true);
+        ringInner.style.transform = 'scale(1)';
+        ringInner.style.borderColor = 'rgba(197, 155, 95, 0.45)';
+        ringInner.style.backgroundColor = 'rgba(197, 155, 95, 0.04)';
+        dotInner.style.transform = 'scale(1)';
       }
     };
 
-    const handleMouseDown = () => setIsClicked(true);
-    const handleMouseUp = () => setIsClicked(false);
+    const onMouseMove = (e: MouseEvent) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
 
-    const handleMouseLeave = () => setIsVisible(false);
-    const handleMouseEnter = () => setIsVisible(true);
+      if (!isVisible) {
+        isVisible = true;
+        ringX = mouseX;
+        ringY = mouseY;
+        dot.style.opacity = '1';
+        ring.style.opacity = '1';
+      }
+    };
 
-    const handleMouseOver = (e: MouseEvent) => {
+    const onMouseDown = () => {
+      isClicked = true;
+      updateVisualState();
+    };
+
+    const onMouseUp = () => {
+      isClicked = false;
+      updateVisualState();
+    };
+
+    const onMouseLeave = () => {
+      isVisible = false;
+      dot.style.opacity = '0';
+      ring.style.opacity = '0';
+    };
+
+    const onMouseEnter = () => {
+      isVisible = true;
+      dot.style.opacity = '1';
+      ring.style.opacity = '1';
+    };
+
+    const onMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
-      // Inputs and textareas keep native cursor
+      // When over form inputs, hide custom cursor to let native I-beam cursor shine
       if (target.closest('input, textarea, select')) {
-        setIsOverInput(true);
+        dot.style.opacity = '0';
+        ring.style.opacity = '0';
         return;
+      } else if (isVisible) {
+        dot.style.opacity = '1';
+        ring.style.opacity = '1';
       }
-      setIsOverInput(false);
 
-      // Check if element or ancestor is interactive
-      const interactiveEl = target.closest(
+      const interactive = target.closest(
         'a, button, [role="button"], .cursor-pointer, [data-cursor]'
-      );
+      ) as HTMLElement | null;
 
-      if (interactiveEl) {
-        setIsHovered(true);
-        const customText = interactiveEl.getAttribute('data-cursor');
-        setCursorText(customText || '');
+      if (interactive) {
+        isHovered = true;
+        const customText = interactive.getAttribute('data-cursor');
+        if (customText && badge) {
+          hasCustomText = true;
+          badge.textContent = customText;
+        } else {
+          hasCustomText = false;
+          if (badge) badge.textContent = '';
+        }
       } else {
-        setIsHovered(false);
-        setCursorText('');
+        isHovered = false;
+        hasCustomText = false;
+        if (badge) badge.textContent = '';
       }
+
+      updateVisualState();
     };
 
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
-    document.addEventListener('mouseleave', handleMouseLeave);
-    document.addEventListener('mouseenter', handleMouseEnter);
-    document.addEventListener('mouseover', handleMouseOver);
+    // 120/144 FPS Hardware-accelerated GPU render loop
+    const render = () => {
+      if (isVisible) {
+        // Dot tracks instant 1:1 with hardware pointer (zero delay)
+        dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+
+        // Ring follows smoothly with 0.25 Lerp factor (fast, snappy, responsive)
+        ringX += (mouseX - ringX) * 0.25;
+        ringY += (mouseY - ringY) * 0.25;
+        ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+      }
+
+      rafId = requestAnimationFrame(render);
+    };
+
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
+    window.addEventListener('mousedown', onMouseDown);
+    window.addEventListener('mouseup', onMouseUp);
+    document.addEventListener('mouseleave', onMouseLeave);
+    document.addEventListener('mouseenter', onMouseEnter);
+    document.addEventListener('mouseover', onMouseOver, { passive: true });
+
+    rafId = requestAnimationFrame(render);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mouseup', handleMouseUp);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      document.removeEventListener('mouseenter', handleMouseEnter);
-      document.removeEventListener('mouseover', handleMouseOver);
+      cancelAnimationFrame(rafId);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mousedown', onMouseDown);
+      window.removeEventListener('mouseup', onMouseUp);
+      document.removeEventListener('mouseleave', onMouseLeave);
+      document.removeEventListener('mouseenter', onMouseEnter);
+      document.removeEventListener('mouseover', onMouseOver);
     };
-  }, [mouseX, mouseY, smoothX, smoothY, isVisible]);
-
-  if (isTouchDevice || !isVisible) {
-    return null;
-  }
+  }, []);
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden">
+    <div
+      className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden"
+      aria-hidden="true"
+    >
       {/* Outer Follower Ring */}
-      <motion.div
-        style={{ x: smoothX, y: smoothY }}
-        className="fixed top-0 left-0 pointer-events-none"
+      <div
+        ref={ringRef}
+        style={{ opacity: 0 }}
+        className="fixed top-[-16px] left-[-16px] w-[32px] h-[32px] pointer-events-none will-change-transform"
       >
-        <motion.div
-          className="-translate-x-1/2 -translate-y-1/2 rounded-full border flex items-center justify-center backdrop-blur-[0.5px] transition-colors duration-200"
-          animate={{
-            width: isHovered ? (cursorText ? 64 : 46) : 34,
-            height: isHovered ? (cursorText ? 64 : 46) : 34,
-            scale: isOverInput ? 0 : isClicked ? 0.85 : 1,
-            opacity: isOverInput ? 0 : 1,
-            borderColor: isHovered ? '#c59b5f' : 'rgba(197, 155, 95, 0.45)',
-            backgroundColor: isHovered ? 'rgba(197, 155, 95, 0.12)' : 'rgba(197, 155, 95, 0.03)',
-          }}
-          transition={{
-            type: 'spring',
-            damping: 24,
-            stiffness: 300,
-            mass: 0.4,
-          }}
+        <div
+          ref={ringInnerRef}
+          className="w-full h-full rounded-full border border-[#c59b5f]/45 bg-[#c59b5f]/[0.04] flex items-center justify-center transition-all duration-150 ease-out will-change-transform"
         >
-          {cursorText && (
-            <span className="text-[9px] uppercase tracking-widest font-semibold text-[#c59b5f] select-none">
-              {cursorText}
-            </span>
-          )}
-        </motion.div>
-      </motion.div>
+          <span
+            ref={badgeRef}
+            className="text-[8px] uppercase tracking-widest font-semibold text-[#c59b5f] select-none"
+          />
+        </div>
+      </div>
 
-      {/* Center Precise Dot */}
-      <motion.div
-        style={{ x: mouseX, y: mouseY }}
-        className="fixed top-0 left-0 pointer-events-none"
+      {/* Center Precision Dot - 0ms instant tracking */}
+      <div
+        ref={dotRef}
+        style={{ opacity: 0 }}
+        className="fixed top-[-4px] left-[-4px] w-2 h-2 pointer-events-none will-change-transform"
       >
-        <motion.div
-          className="-translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#c59b5f] shadow-[0_0_8px_rgba(197,155,95,0.7)]"
-          animate={{
-            scale: isOverInput ? 0 : isClicked ? 0.6 : isHovered ? 0.5 : 1,
-            opacity: isOverInput || cursorText ? 0 : 1,
-          }}
-          transition={{ duration: 0.15 }}
+        <div
+          ref={dotInnerRef}
+          className="w-full h-full rounded-full bg-[#c59b5f] shadow-[0_0_8px_rgba(197,155,95,0.7)] transition-transform duration-100 ease-out will-change-transform"
         />
-      </motion.div>
+      </div>
     </div>
   );
 }
