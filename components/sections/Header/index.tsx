@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ArrowRight, ChevronDown, ChevronRight } from 'lucide-react';
+import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { HeaderData, NavItem } from '../../types';
 
@@ -12,135 +12,22 @@ interface HeaderProps {
   data: HeaderData;
 }
 
-/** Desktop Navigation Item — handles standard link, Level 1 dropdown, and Level 2 nested dropdown flyouts */
-function DesktopNavItem({
-  item,
-  active,
-  isActive,
-}: {
-  item: NavItem;
-  active: boolean;
-  isActive: (href: string) => boolean;
-}) {
-  const hasChildren = Boolean(item.children && item.children.length > 0);
-
-  if (!hasChildren) {
-    return (
-      <Link
-        href={item.href}
-        className={`relative py-1 text-[12.5px] uppercase tracking-[0.2em] font-medium transition-colors duration-200 ${
-          active ? 'text-[#c59b5f]' : 'text-white/80 hover:text-[#c59b5f]'
-        }`}
-      >
-        {item.name}
-        {active && (
-          <motion.span
-            layoutId="aanya-desktop-active"
-            transition={{ type: 'spring', stiffness: 380, damping: 32 }}
-            className="absolute left-0 right-0 -bottom-1 h-[1.5px] bg-[#c59b5f]"
-          />
-        )}
-      </Link>
-    );
-  }
-
-  return (
-    <div className="group/nav relative inline-block">
-      <Link
-        href={item.href}
-        className={`inline-flex items-center gap-1.5 py-1 text-[12.5px] uppercase tracking-[0.2em] font-medium transition-colors duration-200 ${
-          active ? 'text-[#c59b5f]' : 'text-white/80 hover:text-[#c59b5f]'
-        }`}
-      >
-        <span>{item.name}</span>
-        <ChevronDown className="h-3 w-3 opacity-60 transition-transform duration-200 group-hover/nav:rotate-180" />
-        {active && (
-          <motion.span
-            layoutId="aanya-desktop-active"
-            transition={{ type: 'spring', stiffness: 380, damping: 32 }}
-            className="absolute left-0 right-0 -bottom-1 h-[1.5px] bg-[#c59b5f]"
-          />
-        )}
-      </Link>
-
-      {/* Level 1 Dropdown Menu */}
-      <div className="pointer-events-none absolute left-0 top-full pt-3 opacity-0 translate-y-2 transition-all duration-200 group-hover/nav:pointer-events-auto group-hover/nav:opacity-100 group-hover/nav:translate-y-0 focus-within:pointer-events-auto focus-within:opacity-100 focus-within:translate-y-0 z-50">
-        <div className="min-w-[230px] rounded-xl border border-white/10 bg-[#121110]/95 backdrop-blur-xl p-2 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.8)]">
-          <ul className="space-y-0.5">
-            {item.children?.map((sub) => {
-              const hasSubChildren = Boolean(sub.children && sub.children.length > 0);
-              const isSubActive = isActive(sub.href);
-
-              if (!hasSubChildren) {
-                return (
-                  <li key={sub.name}>
-                    <Link
-                      href={sub.href}
-                      className={`block rounded-lg px-3.5 py-2.5 text-[12px] uppercase tracking-[0.16em] font-medium transition-colors ${
-                        isSubActive ? 'bg-[#c59b5f]/15 text-[#c59b5f]' : 'text-white/80 hover:bg-white/5 hover:text-[#c59b5f]'
-                      }`}
-                    >
-                      {sub.name}
-                    </Link>
-                  </li>
-                );
-              }
-
-              // Level 2: Nested dropdown flyout
-              return (
-                <li key={sub.name} className="group/sub relative">
-                  <Link
-                    href={sub.href}
-                    className={`flex items-center justify-between rounded-lg px-3.5 py-2.5 text-[12px] uppercase tracking-[0.16em] font-medium transition-colors ${
-                      isSubActive ? 'bg-[#c59b5f]/15 text-[#c59b5f]' : 'text-white/80 hover:bg-white/5 hover:text-[#c59b5f]'
-                    }`}
-                  >
-                    <span>{sub.name}</span>
-                    <ChevronRight className="h-3 w-3 opacity-60 transition-transform duration-200 group-hover/sub:translate-x-0.5" />
-                  </Link>
-
-                  {/* Level 2 Sub-Dropdown Card */}
-                  <div className="pointer-events-none absolute left-full top-0 pl-2 opacity-0 translate-x-2 transition-all duration-200 group-hover/sub:pointer-events-auto group-hover/sub:opacity-100 group-hover/sub:translate-x-0 focus-within:pointer-events-auto focus-within:opacity-100 focus-within:translate-x-0 z-50">
-                    <div className="min-w-[210px] rounded-xl border border-white/10 bg-[#121110]/95 backdrop-blur-xl p-2 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.8)]">
-                      <ul className="space-y-0.5">
-                        {sub.children?.map((nested) => (
-                          <li key={nested.name}>
-                            <Link
-                              href={nested.href}
-                              className={`block rounded-lg px-3.5 py-2 text-[11.5px] uppercase tracking-[0.16em] font-medium transition-colors ${
-                                isActive(nested.href) ? 'bg-[#c59b5f]/15 text-[#c59b5f]' : 'text-white/70 hover:bg-white/5 hover:text-[#c59b5f]'
-                              }`}
-                            >
-                              {nested.name}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 /** Overlay Menu Item — handles standard link, Level 1 accordion, and Level 2 nested accordion */
 function OverlayNavItem({
   item,
   idx,
   onClose,
+  isActive,
 }: {
   item: NavItem;
   idx: number;
   onClose: () => void;
+  isActive: (href: string) => boolean;
 }) {
   const [expanded, setExpanded] = useState(false);
   const [subExpanded, setSubExpanded] = useState<Record<string, boolean>>({});
   const hasChildren = Boolean(item.children && item.children.length > 0);
+  const active = isActive(item.href);
 
   const toggleSub = (name: string) => {
     setSubExpanded((prev) => ({ ...prev, [name]: !prev[name] }));
@@ -161,7 +48,9 @@ function OverlayNavItem({
         <Link
           href={item.href}
           onClick={onClose}
-          className="group flex items-center justify-between text-3xl sm:text-5xl md:text-6xl font-serif text-white hover:text-[#c59b5f] transition-colors duration-200 py-1"
+          className={`group flex items-center justify-between text-3xl sm:text-5xl md:text-6xl font-serif transition-colors duration-200 py-1 ${
+            active ? 'text-[#c59b5f]' : 'text-white hover:text-[#c59b5f]'
+          }`}
         >
           <span className="transition-transform duration-200 group-hover:translate-x-2">
             {item.name}
@@ -184,28 +73,32 @@ function OverlayNavItem({
       }}
       className="flex flex-col"
     >
-      <div className="group flex items-center justify-between py-1">
-        <Link
-          href={item.href}
-          onClick={onClose}
-          className="text-3xl sm:text-5xl md:text-6xl font-serif text-white hover:text-[#c59b5f] transition-colors duration-200 flex-1"
-        >
-          <span className="transition-transform duration-200 group-hover:translate-x-2">
-            {item.name}
-          </span>
-        </Link>
+      <div className="py-1">
         <button
           type="button"
           onClick={() => setExpanded((prev) => !prev)}
-          aria-label={`Toggle ${item.name} sub-menu`}
           aria-expanded={expanded}
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white/80 hover:border-[#c59b5f] hover:text-[#c59b5f] transition-all cursor-pointer"
+          aria-label={`Toggle ${item.name} sub-menu`}
+          className={`group flex items-center justify-between w-full text-left transition-colors duration-200 cursor-pointer ${
+            active || expanded ? 'text-[#c59b5f]' : 'text-white hover:text-[#c59b5f]'
+          }`}
         >
-          <ChevronDown
-            className={`w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 ${
-              expanded ? 'rotate-180 text-[#c59b5f]' : ''
+          <span className="text-3xl sm:text-5xl md:text-6xl font-serif transition-transform duration-200 group-hover:translate-x-2">
+            {item.name}
+          </span>
+          <div
+            className={`flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full border transition-all shrink-0 ${
+              expanded
+                ? 'border-[#c59b5f] text-[#c59b5f] bg-[#c59b5f]/15'
+                : 'border-white/20 text-white/80 group-hover:border-[#c59b5f] group-hover:text-[#c59b5f]'
             }`}
-          />
+          >
+            <ChevronDown
+              className={`w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 ${
+                expanded ? 'rotate-180 text-[#c59b5f]' : ''
+              }`}
+            />
+          </div>
         </button>
       </div>
 
@@ -221,6 +114,7 @@ function OverlayNavItem({
             {item.children?.map((sub) => {
               const hasSubChildren = Boolean(sub.children && sub.children.length > 0);
               const isSubOpen = Boolean(subExpanded[sub.name]);
+              const isSubActive = isActive(sub.href);
 
               if (!hasSubChildren) {
                 return (
@@ -228,7 +122,9 @@ function OverlayNavItem({
                     <Link
                       href={sub.href}
                       onClick={onClose}
-                      className="group flex items-center justify-between text-xl sm:text-2xl md:text-3xl font-serif text-white/85 hover:text-[#c59b5f] transition-colors duration-200 py-1"
+                      className={`group flex items-center justify-between text-xl sm:text-2xl md:text-3xl font-serif transition-colors duration-200 py-1 ${
+                        isSubActive ? 'text-[#c59b5f]' : 'text-white/85 hover:text-[#c59b5f]'
+                      }`}
                     >
                       <span className="transition-transform duration-200 group-hover:translate-x-1.5">
                         {sub.name}
@@ -239,31 +135,35 @@ function OverlayNavItem({
                 );
               }
 
-              // Level 2 inside overlay accordion
+              // Level 2 inside overlay accordion (Dropdown inside dropdown)
               return (
                 <li key={sub.name} className="flex flex-col">
-                  <div className="flex items-center justify-between py-1">
-                    <Link
-                      href={sub.href}
-                      onClick={onClose}
-                      className="text-xl sm:text-2xl md:text-3xl font-serif text-white/85 hover:text-[#c59b5f] transition-colors duration-200 flex-1"
-                    >
+                  <button
+                    type="button"
+                    onClick={() => toggleSub(sub.name)}
+                    aria-expanded={isSubOpen}
+                    aria-label={`Toggle ${sub.name} nested menu`}
+                    className={`group flex items-center justify-between w-full py-1 text-left transition-colors duration-200 cursor-pointer ${
+                      isSubActive || isSubOpen ? 'text-[#c59b5f]' : 'text-white/85 hover:text-[#c59b5f]'
+                    }`}
+                  >
+                    <span className="text-xl sm:text-2xl md:text-3xl font-serif transition-transform duration-200 group-hover:translate-x-1.5">
                       {sub.name}
-                    </Link>
-                    <button
-                      type="button"
-                      onClick={() => toggleSub(sub.name)}
-                      aria-label={`Toggle ${sub.name} nested menu`}
-                      aria-expanded={isSubOpen}
-                      className="p-2 text-white/70 hover:text-[#c59b5f] cursor-pointer"
+                    </span>
+                    <div
+                      className={`flex h-8 w-8 items-center justify-center rounded-full border transition-all shrink-0 ${
+                        isSubOpen
+                          ? 'border-[#c59b5f] text-[#c59b5f] bg-[#c59b5f]/15'
+                          : 'border-white/20 text-white/70 group-hover:border-[#c59b5f] group-hover:text-[#c59b5f]'
+                      }`}
                     >
                       <ChevronDown
                         className={`w-4 h-4 transition-transform duration-200 ${
                           isSubOpen ? 'rotate-180 text-[#c59b5f]' : ''
                         }`}
                       />
-                    </button>
-                  </div>
+                    </div>
+                  </button>
 
                   <AnimatePresence initial={false}>
                     {isSubOpen && (
@@ -279,7 +179,11 @@ function OverlayNavItem({
                             <Link
                               href={nested.href}
                               onClick={onClose}
-                              className="block text-base sm:text-lg font-serif text-white/70 hover:text-[#c59b5f] transition-colors duration-200 py-1"
+                              className={`block text-base sm:text-lg font-serif transition-colors duration-200 py-1 ${
+                                isActive(nested.href)
+                                  ? 'text-[#c59b5f]'
+                                  : 'text-white/70 hover:text-[#c59b5f]'
+                              }`}
                             >
                               {nested.name}
                             </Link>
@@ -369,18 +273,6 @@ export default function Header({ data }: HeaderProps) {
             </div>
           </Link>
 
-          {/* Desktop inline navbar with multi-level dropdown support */}
-          <nav className="hidden lg:flex items-center gap-7 xl:gap-9" aria-label="Main navigation">
-            {data.links.map((link) => (
-              <DesktopNavItem
-                key={link.name}
-                item={link}
-                active={isActive(link.href)}
-                isActive={isActive}
-              />
-            ))}
-          </nav>
-
           {/* Hamburger Circular Button - Compact on scroll */}
           <button
             type="button"
@@ -442,6 +334,7 @@ export default function Header({ data }: HeaderProps) {
                     item={link}
                     idx={idx}
                     onClose={() => setIsOpen(false)}
+                    isActive={isActive}
                   />
                 ))}
               </nav>
