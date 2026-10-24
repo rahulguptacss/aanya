@@ -326,7 +326,7 @@ export default function Header({ data }: HeaderProps) {
             </div>
 
             {/* Menu Links with multi-level dropdown accordion support */}
-            <div className="max-w-7xl w-full mx-auto my-auto py-6 max-h-[75vh] overflow-y-auto pr-2">
+            <div className="max-w-7xl w-full mx-auto my-auto py-6 max-h-[78vh] overflow-y-auto pr-3 sm:pr-5 header-menu-scrollbar">
               <nav className="flex flex-col space-y-3 sm:space-y-4">
                 {data.links.map((link, idx) => (
                   <OverlayNavItem

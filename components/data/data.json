@@ -205,10 +205,24 @@
                 {
                   "key": "ServicesSection",
                   "component": "Services"
+                }
+              ]
+            },
+            "service_detail": {
+              "title": "Service Detail | Aanya Sharma",
+              "pageName": "Services",
+              "metadata": {
+                "title": "Service Detail | Aanya Sharma - Luxury Fashion & Model Services",
+                "description": "Explore professional modeling, runway, brand campaigns, and editorial services by Aanya Sharma."
+              },
+              "components": [
+                {
+                  "key": "BreadcrumbSection",
+                  "component": "Breadcrumb"
                 },
                 {
-                  "key": "TestimonialsSection",
-                  "component": "Testimonials"
+                  "key": "ServiceDetailGridSection",
+                  "component": "ServiceDetail"
                 }
               ]
             },
@@ -736,29 +750,607 @@
               "items": [
                 {
                   "id": "s-1",
+                  "slug": "fashion-modelling",
                   "title": "Fashion Modelling",
                   "image": "/services/1.webp",
-                  "alt": "Fashion Modelling - Aanya Sharma"
+                  "alt": "Fashion Modelling - Aanya Sharma",
+                  "href": "/services/fashion-modelling"
                 },
                 {
                   "id": "s-2",
+                  "slug": "brand-campaign",
                   "title": "Brand Campaign",
                   "image": "/services/2.webp",
-                  "alt": "Brand Campaign - Aanya Sharma"
+                  "alt": "Brand Campaign - Aanya Sharma",
+                  "href": "/services/brand-campaign"
                 },
                 {
                   "id": "s-3",
+                  "slug": "commercial-shoot",
                   "title": "Commercial Shoot",
                   "image": "/services/3.webp",
-                  "alt": "Commercial Shoot - Aanya Sharma"
+                  "alt": "Commercial Shoot - Aanya Sharma",
+                  "href": "/services/commercial-shoot"
                 },
                 {
                   "id": "s-4",
+                  "slug": "editorial-magazine",
                   "title": "EDITORIAL & MAGAZINE",
                   "image": "/services/4.webp",
-                  "alt": "Editorial & Magazine - Aanya Sharma"
+                  "alt": "Editorial & Magazine - Aanya Sharma",
+                  "href": "/services/editorial-magazine"
                 }
               ]
+            },
+            "service_details": {
+              "fashion-modelling": {
+                "id": "sd-fashion-modelling",
+                "slug": "fashion-modelling",
+                "title": "Fashion Modelling",
+                "category": "High Fashion & Runway",
+                "description": "Aanya Sharma's high-fashion and runway modelling portfolio, featuring haute couture, fashion week runway walks, and luxury designer collections.",
+                "items": [
+                  {
+                    "id": "p-1",
+                    "title": "Runway Cashmere Knit",
+                    "category": "High Fashion",
+                    "image": "/portfolio/portfolio-1.webp",
+                    "alt": "Aanya Sharma Runway Cashmere Knit"
+                  },
+                  {
+                    "id": "p-2",
+                    "title": "Resort Summer Haute Couture",
+                    "category": "Runway",
+                    "image": "/portfolio/portfolio-2.webp",
+                    "alt": "Aanya Sharma Straw Hat Fashion Collection"
+                  },
+                  {
+                    "id": "p-3",
+                    "title": "Noir Evening Silhouette",
+                    "category": "High Fashion",
+                    "image": "/portfolio/portfolio-3.webp",
+                    "alt": "Aanya Sharma Noir Evening Look"
+                  },
+                  {
+                    "id": "p-4",
+                    "title": "Haute Couture Flora Close-Up",
+                    "category": "Beauty Fashion",
+                    "image": "/portfolio/portfolio-4.webp",
+                    "alt": "Aanya Sharma White Flowers Portrait"
+                  },
+                  {
+                    "id": "p-5",
+                    "title": "Crystalline Evening Gown",
+                    "category": "Red Carpet",
+                    "image": "/portfolio/portfolio-5.webp",
+                    "alt": "Aanya Sharma Crystal Embellished Gown"
+                  },
+                  {
+                    "id": "p-6",
+                    "title": "Studio Fashion Lookbook",
+                    "category": "Editorial",
+                    "image": "/portfolio/portfolio-6.webp",
+                    "alt": "Aanya Sharma Studio Beauty Portrait"
+                  },
+                  {
+                    "id": "p-7",
+                    "title": "Heritage Silk & Emerald Couture",
+                    "category": "Traditional Haute Couture",
+                    "image": "/portfolio/portfolio-7.webp",
+                    "alt": "Aanya Sharma Heritage Green Saree"
+                  },
+                  {
+                    "id": "p-8",
+                    "title": "Monochrome Minimalist Line",
+                    "category": "Runway",
+                    "image": "/portfolio/portfolio-8.webp",
+                    "alt": "Aanya Sharma Black Turtleneck High Fashion"
+                  },
+                  {
+                    "id": "p-9",
+                    "title": "Golden Hour Sunlight Look",
+                    "category": "High Fashion",
+                    "image": "/portfolio/portfolio-9.webp",
+                    "alt": "Aanya Sharma Sunlight Blue Silk"
+                  },
+                  {
+                    "id": "p-10",
+                    "title": "Midnight Embellished Tulle",
+                    "category": "Haute Couture",
+                    "image": "/portfolio/portfolio-10.webp",
+                    "alt": "Aanya Sharma Sheer Black Veil"
+                  },
+                  {
+                    "id": "p-11",
+                    "title": "Oceanfront Resort Runway",
+                    "category": "Resort Wear",
+                    "image": "/portfolio/portfolio-11.webp",
+                    "alt": "Aanya Sharma Sunset Beach Look"
+                  },
+                  {
+                    "id": "p-12",
+                    "title": "Satin Slip Haute Couture",
+                    "category": "Luxury Fashion",
+                    "image": "/portfolio/portfolio-12.webp",
+                    "alt": "Aanya Sharma Champagne Satin Gown"
+                  },
+                  {
+                    "id": "p-13",
+                    "title": "Tailored Power Suiting",
+                    "category": "Runway",
+                    "image": "/portfolio/portfolio-13.webp",
+                    "alt": "Aanya Sharma Black Tailored Blazer"
+                  },
+                  {
+                    "id": "p-14",
+                    "title": "Spring/Summer Wildflower Couture",
+                    "category": "High Fashion",
+                    "image": "/portfolio/portfolio-14.webp",
+                    "alt": "Aanya Sharma Lavender Field Look"
+                  },
+                  {
+                    "id": "p-15",
+                    "title": "Luxury Knit Studio Shoot",
+                    "category": "Editorial",
+                    "image": "/portfolio/portfolio-15.webp",
+                    "alt": "Aanya Sharma White Knitwear Look"
+                  },
+                  {
+                    "id": "p-16",
+                    "title": "Coastal Swimwear High Fashion",
+                    "category": "Swimwear",
+                    "image": "/portfolio/portfolio-16.webp",
+                    "alt": "Aanya Sharma Coastal Beach Swimsuit"
+                  },
+                  {
+                    "id": "p-17",
+                    "title": "Palace Grand Staircase Crimson Ballgown",
+                    "category": "Haute Couture Finale",
+                    "image": "/portfolio/portfolio-17.webp",
+                    "alt": "Aanya Sharma Red Ballgown on Palace Steps"
+                  },
+                  {
+                    "id": "p-18",
+                    "title": "Bridal Fashion Week White Roses",
+                    "category": "Bridal Couture",
+                    "image": "/portfolio/portfolio-18.webp",
+                    "alt": "Aanya Sharma Bridal Gown with White Roses"
+                  },
+                  {
+                    "id": "p-19",
+                    "title": "Twilight Meadow Pink Tulle Finale",
+                    "category": "Haute Couture",
+                    "image": "/portfolio/portfolio-19.webp",
+                    "alt": "Aanya Sharma Pink Tulle Sunset Gown"
+                  }
+                ]
+              },
+              "brand-campaign": {
+                "id": "sd-brand-campaign",
+                "slug": "brand-campaign",
+                "title": "Brand Campaign",
+                "category": "Commercial & Luxury Campaigns",
+                "description": "Aanya Sharma's international brand campaign endorsements for luxury beauty, jewelry, lifestyle, and couture labels.",
+                "items": [
+                  {
+                    "id": "p-1",
+                    "title": "Cashmere Living Brand Campaign",
+                    "category": "Luxury Campaign",
+                    "image": "/portfolio/portfolio-15.webp",
+                    "alt": "Aanya Sharma Luxury Knitwear Brand Campaign"
+                  },
+                  {
+                    "id": "p-2",
+                    "title": "Modern Executive Brand Ambassador",
+                    "category": "Corporate Campaign",
+                    "image": "/portfolio/portfolio-13.webp",
+                    "alt": "Aanya Sharma Tailored Brand Campaign"
+                  },
+                  {
+                    "id": "p-3",
+                    "title": "Minimalist High-End Watch Campaign",
+                    "category": "Timepiece Campaign",
+                    "image": "/portfolio/portfolio-8.webp",
+                    "alt": "Aanya Sharma Turtleneck Watch Campaign"
+                  },
+                  {
+                    "id": "p-4",
+                    "title": "Radiant Skin Outdoor Campaign",
+                    "category": "Beauty Endorsement",
+                    "image": "/portfolio/portfolio-9.webp",
+                    "alt": "Aanya Sharma Skincare Brand Shoot"
+                  },
+                  {
+                    "id": "p-5",
+                    "title": "Riviera Resort Brand Campaign",
+                    "category": "Resort Campaign",
+                    "image": "/portfolio/portfolio-2.webp",
+                    "alt": "Aanya Sharma Straw Hat Resort Campaign"
+                  },
+                  {
+                    "id": "p-6",
+                    "title": "Occasion Jewels Brand Ambassador",
+                    "category": "Fine Jewelry",
+                    "image": "/portfolio/portfolio-10.webp",
+                    "alt": "Aanya Sharma Festive Jewelry Campaign"
+                  },
+                  {
+                    "id": "p-7",
+                    "title": "Floral Perfume Global Ad",
+                    "category": "Fragrance Campaign",
+                    "image": "/portfolio/portfolio-4.webp",
+                    "alt": "Aanya Sharma Fragrance Campaign"
+                  },
+                  {
+                    "id": "p-8",
+                    "title": "Clean Cosmetics Endorsement",
+                    "category": "Cosmetics Campaign",
+                    "image": "/portfolio/portfolio-6.webp",
+                    "alt": "Aanya Sharma Clean Beauty Campaign"
+                  },
+                  {
+                    "id": "p-9",
+                    "title": "Midnight Luxury Campaign",
+                    "category": "Brand Commercial",
+                    "image": "/portfolio/portfolio-3.webp",
+                    "alt": "Aanya Sharma Nocturne Campaign"
+                  },
+                  {
+                    "id": "p-10",
+                    "title": "Diamond Gala Jewelry Line",
+                    "category": "Fine Jewelry",
+                    "image": "/portfolio/portfolio-5.webp",
+                    "alt": "Aanya Sharma Diamond Jewelry Campaign"
+                  },
+                  {
+                    "id": "p-11",
+                    "title": "Spring Florals Collection Banner",
+                    "category": "Fashion Campaign",
+                    "image": "/portfolio/portfolio-19.webp",
+                    "alt": "Aanya Sharma Spring Florals Campaign"
+                  },
+                  {
+                    "id": "p-12",
+                    "title": "Mediterranean Active Campaign",
+                    "category": "Swimwear Campaign",
+                    "image": "/portfolio/portfolio-16.webp",
+                    "alt": "Aanya Sharma Beachwear Brand Campaign"
+                  },
+                  {
+                    "id": "p-13",
+                    "title": "Royal Silk Heritage Brand",
+                    "category": "Heritage Campaign",
+                    "image": "/portfolio/portfolio-7.webp",
+                    "alt": "Aanya Sharma Silk Heritage Campaign"
+                  },
+                  {
+                    "id": "p-14",
+                    "title": "Destination Floral Fragrance",
+                    "category": "Fragrance Campaign",
+                    "image": "/portfolio/portfolio-14.webp",
+                    "alt": "Aanya Sharma Perfume Brand Campaign"
+                  },
+                  {
+                    "id": "p-15",
+                    "title": "Nordic Lifestyle Brand Campaign",
+                    "category": "Apparel Campaign",
+                    "image": "/portfolio/portfolio-1.webp",
+                    "alt": "Aanya Sharma Winter Knit Campaign"
+                  },
+                  {
+                    "id": "p-16",
+                    "title": "Couture Bridal Brand Ad",
+                    "category": "Bridal Campaign",
+                    "image": "/portfolio/portfolio-18.webp",
+                    "alt": "Aanya Sharma Bridal Brand Campaign"
+                  },
+                  {
+                    "id": "p-17",
+                    "title": "Golden Shore International Campaign Hero",
+                    "category": "Global Campaign Hero",
+                    "image": "/portfolio/portfolio-11.webp",
+                    "alt": "Aanya Sharma Oceanfront Brand Hero"
+                  },
+                  {
+                    "id": "p-18",
+                    "title": "Evening Silk Loungewear",
+                    "category": "Luxury Loungewear",
+                    "image": "/portfolio/portfolio-12.webp",
+                    "alt": "Aanya Sharma Silk Loungewear Campaign"
+                  },
+                  {
+                    "id": "p-19",
+                    "title": "Imperial Heritage Brand Finale",
+                    "category": "Couture Campaign",
+                    "image": "/portfolio/portfolio-17.webp",
+                    "alt": "Aanya Sharma Heritage Palace Brand Campaign"
+                  }
+                ]
+              },
+              "commercial-shoot": {
+                "id": "sd-commercial-shoot",
+                "slug": "commercial-shoot",
+                "title": "Commercial Shoot",
+                "category": "Commercial & Advertising Media",
+                "description": "Professional commercial shoots for print advertisements, catalog covers, ecommerce banners, and consumer lifestyle media.",
+                "items": [
+                  {
+                    "id": "p-1",
+                    "title": "Silk Resort Commercial Banner",
+                    "category": "Commercial Media",
+                    "image": "/portfolio/portfolio-12.webp",
+                    "alt": "Aanya Sharma Silk Resort Commercial"
+                  },
+                  {
+                    "id": "p-2",
+                    "title": "Summer Activewear Commercial",
+                    "category": "Sports & Swim",
+                    "image": "/portfolio/portfolio-16.webp",
+                    "alt": "Aanya Sharma Summer Activewear Commercial"
+                  },
+                  {
+                    "id": "p-3",
+                    "title": "Commercial Studio Beauty Headshot",
+                    "category": "Commercial Beauty",
+                    "image": "/portfolio/portfolio-6.webp",
+                    "alt": "Aanya Sharma Beauty Headshot"
+                  },
+                  {
+                    "id": "p-4",
+                    "title": "Traditional Festive Commercial",
+                    "category": "Ethnic Wear",
+                    "image": "/portfolio/portfolio-7.webp",
+                    "alt": "Aanya Sharma Festive Commercial"
+                  },
+                  {
+                    "id": "p-5",
+                    "title": "Winter Apparel Catalog",
+                    "category": "Ecommerce Commercial",
+                    "image": "/portfolio/portfolio-8.webp",
+                    "alt": "Aanya Sharma Knitwear Commercial"
+                  },
+                  {
+                    "id": "p-6",
+                    "title": "Commercial Studio Night Look",
+                    "category": "Commercial Fashion",
+                    "image": "/portfolio/portfolio-3.webp",
+                    "alt": "Aanya Sharma Studio Commercial"
+                  },
+                  {
+                    "id": "p-7",
+                    "title": "Wedding Services Commercial",
+                    "category": "Bridal Commercial",
+                    "image": "/portfolio/portfolio-18.webp",
+                    "alt": "Aanya Sharma Wedding Commercial"
+                  },
+                  {
+                    "id": "p-8",
+                    "title": "Outdoor Lifestyle Commercial",
+                    "category": "Lifestyle Media",
+                    "image": "/portfolio/portfolio-9.webp",
+                    "alt": "Aanya Sharma Outdoor Commercial"
+                  },
+                  {
+                    "id": "p-9",
+                    "title": "Travel & Tourism Commercial",
+                    "category": "Travel Commercial",
+                    "image": "/portfolio/portfolio-2.webp",
+                    "alt": "Aanya Sharma Tourism Commercial"
+                  },
+                  {
+                    "id": "p-10",
+                    "title": "Botanical Skincare Commercial",
+                    "category": "Beauty Commercial",
+                    "image": "/portfolio/portfolio-4.webp",
+                    "alt": "Aanya Sharma Botanical Beauty Commercial"
+                  },
+                  {
+                    "id": "p-11",
+                    "title": "Home Comfort Living Commercial",
+                    "category": "Living Commercial",
+                    "image": "/portfolio/portfolio-15.webp",
+                    "alt": "Aanya Sharma Home Comfort Commercial"
+                  },
+                  {
+                    "id": "p-12",
+                    "title": "Meadow Fashion Commercial",
+                    "category": "Catalog Commercial",
+                    "image": "/portfolio/portfolio-14.webp",
+                    "alt": "Aanya Sharma Summer Meadow Commercial"
+                  },
+                  {
+                    "id": "p-13",
+                    "title": "Jewelry Boutique Commercial",
+                    "category": "Jewelry Commercial",
+                    "image": "/portfolio/portfolio-5.webp",
+                    "alt": "Aanya Sharma Boutique Commercial"
+                  },
+                  {
+                    "id": "p-14",
+                    "title": "Corporate Leadership Commercial",
+                    "category": "Business Commercial",
+                    "image": "/portfolio/portfolio-13.webp",
+                    "alt": "Aanya Sharma Executive Commercial"
+                  },
+                  {
+                    "id": "p-15",
+                    "title": "Golden Sunset Resort Commercial",
+                    "category": "Resort Commercial",
+                    "image": "/portfolio/portfolio-11.webp",
+                    "alt": "Aanya Sharma Coastal Resort Commercial"
+                  },
+                  {
+                    "id": "p-16",
+                    "title": "Festive Evening Commercial",
+                    "category": "Ethnic Commercial",
+                    "image": "/portfolio/portfolio-10.webp",
+                    "alt": "Aanya Sharma Festive Commercial"
+                  },
+                  {
+                    "id": "p-17",
+                    "title": "Ethereal Outdoor Showcase Hero",
+                    "category": "Commercial Hero",
+                    "image": "/portfolio/portfolio-19.webp",
+                    "alt": "Aanya Sharma Pink Tulle Commercial Hero"
+                  },
+                  {
+                    "id": "p-18",
+                    "title": "Palace Heritage Venue Commercial",
+                    "category": "Destination Commercial",
+                    "image": "/portfolio/portfolio-17.webp",
+                    "alt": "Aanya Sharma Palace Steps Commercial"
+                  },
+                  {
+                    "id": "p-19",
+                    "title": "Autumn Casual Living Banner",
+                    "category": "Lifestyle Commercial",
+                    "image": "/portfolio/portfolio-1.webp",
+                    "alt": "Aanya Sharma Autumn Commercial"
+                  }
+                ]
+              },
+              "editorial-magazine": {
+                "id": "sd-editorial-magazine",
+                "slug": "editorial-magazine",
+                "title": "EDITORIAL & MAGAZINE",
+                "category": "High Editorial & Magazine Covers",
+                "description": "Artistic and high-fashion editorial spreads, magazine cover stories, avant-garde styling, and conceptual publication features.",
+                "items": [
+                  {
+                    "id": "p-1",
+                    "title": "Double-Page Centerfold Meadow",
+                    "category": "Vogue Editorial Spread",
+                    "image": "/portfolio/portfolio-19.webp",
+                    "alt": "Aanya Sharma Editorial Centerfold"
+                  },
+                  {
+                    "id": "p-2",
+                    "title": "Vogue Bridal Cover Portrait",
+                    "category": "Magazine Cover",
+                    "image": "/portfolio/portfolio-18.webp",
+                    "alt": "Aanya Sharma Magazine Cover Story"
+                  },
+                  {
+                    "id": "p-3",
+                    "title": "Artistic Noir Shadow Play",
+                    "category": "Avant-Garde",
+                    "image": "/portfolio/portfolio-10.webp",
+                    "alt": "Aanya Sharma Black Veil Editorial"
+                  },
+                  {
+                    "id": "p-4",
+                    "title": "Fine Jewels Editorial Feature",
+                    "category": "Jewelry Editorial",
+                    "image": "/portfolio/portfolio-5.webp",
+                    "alt": "Aanya Sharma Crystal Editorial"
+                  },
+                  {
+                    "id": "p-5",
+                    "title": "Heritage & Modernity Story",
+                    "category": "Cultural Editorial",
+                    "image": "/portfolio/portfolio-7.webp",
+                    "alt": "Aanya Sharma Heritage Saree Editorial"
+                  },
+                  {
+                    "id": "p-6",
+                    "title": "Conceptual Botanical Portrait",
+                    "category": "Beauty Editorial",
+                    "image": "/portfolio/portfolio-4.webp",
+                    "alt": "Aanya Sharma Botanical Portrait"
+                  },
+                  {
+                    "id": "p-7",
+                    "title": "Deconstructed Power Suiting",
+                    "category": "Fashion Editorial",
+                    "image": "/portfolio/portfolio-13.webp",
+                    "alt": "Aanya Sharma Blazer Editorial"
+                  },
+                  {
+                    "id": "p-8",
+                    "title": "Minimalist Expressionism",
+                    "category": "Artistic Editorial",
+                    "image": "/portfolio/portfolio-6.webp",
+                    "alt": "Aanya Sharma Studio Expression"
+                  },
+                  {
+                    "id": "p-9",
+                    "title": "Classic Vogue Monochrome",
+                    "category": "Cover Spread",
+                    "image": "/portfolio/portfolio-8.webp",
+                    "alt": "Aanya Sharma Turtleneck Monochrome"
+                  },
+                  {
+                    "id": "p-10",
+                    "title": "Architectural Coastal Form",
+                    "category": "Location Editorial",
+                    "image": "/portfolio/portfolio-16.webp",
+                    "alt": "Aanya Sharma Coastal Editorial"
+                  },
+                  {
+                    "id": "p-11",
+                    "title": "Cozy Winter Editorial Spread",
+                    "category": "Lifestyle Spread",
+                    "image": "/portfolio/portfolio-1.webp",
+                    "alt": "Aanya Sharma Knitwear Editorial Spread"
+                  },
+                  {
+                    "id": "p-12",
+                    "title": "Straw Hat High Summer Story",
+                    "category": "Resort Editorial",
+                    "image": "/portfolio/portfolio-2.webp",
+                    "alt": "Aanya Sharma Summer Story"
+                  },
+                  {
+                    "id": "p-13",
+                    "title": "Cinematic Low Light Narrative",
+                    "category": "Cinematic Editorial",
+                    "image": "/portfolio/portfolio-3.webp",
+                    "alt": "Aanya Sharma Cinematic Low Light"
+                  },
+                  {
+                    "id": "p-14",
+                    "title": "Golden Hour Cinematic Portrait",
+                    "category": "Golden Light Story",
+                    "image": "/portfolio/portfolio-9.webp",
+                    "alt": "Aanya Sharma Golden Light Portrait"
+                  },
+                  {
+                    "id": "p-15",
+                    "title": "Intimate Atelier Study",
+                    "category": "Atelier Feature",
+                    "image": "/portfolio/portfolio-12.webp",
+                    "alt": "Aanya Sharma Atelier Study"
+                  },
+                  {
+                    "id": "p-16",
+                    "title": "Morning Light Conceptual Story",
+                    "category": "Conceptual Story",
+                    "image": "/portfolio/portfolio-15.webp",
+                    "alt": "Aanya Sharma Morning Light Study"
+                  },
+                  {
+                    "id": "p-17",
+                    "title": "Haute Couture Palace Grand Cover Feature",
+                    "category": "Magazine Cover Story Hero",
+                    "image": "/portfolio/portfolio-17.webp",
+                    "alt": "Aanya Sharma Palace Ballgown Cover Hero"
+                  },
+                  {
+                    "id": "p-18",
+                    "title": "Golden Sunset Coastal Narrative",
+                    "category": "Travel Editorial",
+                    "image": "/portfolio/portfolio-11.webp",
+                    "alt": "Aanya Sharma Sunset Narrative"
+                  },
+                  {
+                    "id": "p-19",
+                    "title": "Wildflower Field Editorial Finale",
+                    "category": "Fashion Finale",
+                    "image": "/portfolio/portfolio-14.webp",
+                    "alt": "Aanya Sharma Wildflower Finale"
+                  }
+                ]
+              }
             },
             "blog_list": {
               "eyebrow": "OUR BLOG",

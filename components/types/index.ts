@@ -211,7 +211,7 @@ export interface NotFoundData {
   };
 }
 
-export interface PortfolioGridItem {
+export interface ServiceDetailItem {
   id: string;
   title: string;
   category: string;
@@ -219,15 +219,26 @@ export interface PortfolioGridItem {
   alt: string;
 }
 
-export interface PortfolioGridSectionData {
-  items: PortfolioGridItem[];
+export interface ServiceDetailSectionData {
+  id?: string;
+  slug?: string;
+  title?: string;
+  category?: string;
+  description?: string;
+  items: ServiceDetailItem[];
 }
+
+export type PortfolioGridItem = ServiceDetailItem;
+export type PortfolioGridSectionData = ServiceDetailSectionData;
 
 export interface ServiceCardItem {
   id: string;
+  slug?: string;
   title: string;
   image: string;
   alt: string;
+  href?: string;
+  description?: string;
 }
 
 export interface ServicesSectionData {
@@ -328,6 +339,7 @@ export interface SiteSections {
   portfolio: PortfolioSectionData;
   portfolio_grid?: PortfolioGridSectionData;
   services: ServicesSectionData;
+  service_details?: Record<string, ServiceDetailSectionData>;
   testimonials: TestimonialsSectionData;
   gallery: GallerySectionData;
   blog_list: BlogListSectionData;
@@ -341,6 +353,7 @@ export interface SitePages {
   about: PageMeta;
   portfolio: PageMeta;
   services: PageMeta;
+  service_detail?: PageMeta;
   blog: PageMeta;
   blog_detail: PageMeta;
   contact: PageMeta;

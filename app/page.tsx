@@ -26,7 +26,7 @@ export default function Home() {
         data={sections.portfolio}
         initialCount={5}
         showReadMore={false}
-        enableLightbox={false}
+        enableLightbox={true}
       />
     ),
     Testimonials: <Testimonials data={sections.testimonials} />,

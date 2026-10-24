@@ -4,22 +4,22 @@ import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
-import type { PortfolioGridSectionData, PortfolioGridItem } from '../../types';
+import type { ServiceDetailSectionData, ServiceDetailItem } from '../../types';
 
-interface PortfolioGridProps {
-  data: PortfolioGridSectionData;
+interface ServiceDetailProps {
+  data: ServiceDetailSectionData;
 }
 
-export default function PortfolioGrid({ data }: PortfolioGridProps) {
+export default function ServiceDetail({ data }: ServiceDetailProps) {
   const [activeItemIndex, setActiveItemIndex] = useState<number | null>(null);
 
   const items = data.items;
 
   // Find items by ID or index for deterministic placement
-  const itemMap = new Map<string, PortfolioGridItem>();
+  const itemMap = new Map<string, ServiceDetailItem>();
   items.forEach((item) => itemMap.set(item.id, item));
 
-  const getItem = (id: string, fallbackIdx: number): PortfolioGridItem => {
+  const getItem = (id: string, fallbackIdx: number): ServiceDetailItem => {
     return itemMap.get(id) ?? items[fallbackIdx] ?? items[0];
   };
 
@@ -41,11 +41,18 @@ export default function PortfolioGrid({ data }: PortfolioGridProps) {
   );
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [handleKeyDown]);
+    if (activeItemIndex === null) return;
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
 
-  const openLightbox = (item: PortfolioGridItem) => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [activeItemIndex, handleKeyDown]);
+
+  const openLightbox = (item: ServiceDetailItem) => {
     const idx = items.findIndex((i) => i.id === item.id);
     setActiveItemIndex(idx >= 0 ? idx : 0);
   };
@@ -56,7 +63,7 @@ export default function PortfolioGrid({ data }: PortfolioGridProps) {
     className = '',
     priority = false,
   }: {
-    item: PortfolioGridItem;
+    item: ServiceDetailItem;
     className?: string;
     priority?: boolean;
   }) => (
@@ -66,6 +73,7 @@ export default function PortfolioGrid({ data }: PortfolioGridProps) {
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       onClick={() => openLightbox(item)}
+      data-cursor="VIEW"
       className={`group relative overflow-hidden bg-[#e8e2d8] cursor-pointer ${className}`}
     >
       <div className="relative w-full h-full">
@@ -225,15 +233,16 @@ export default function PortfolioGrid({ data }: PortfolioGridProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-xl p-4 sm:p-8"
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4 sm:p-8 select-none"
             onClick={() => setActiveItemIndex(null)}
+            data-cursor="CLOSE"
           >
             {/* Top Bar with Counter & Close */}
-            <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-20 text-white">
+            <div className="absolute top-4 sm:top-6 left-4 sm:left-8 right-4 sm:right-8 flex items-center justify-between z-20 text-white">
               <div className="flex items-center gap-3">
                 <span className="text-xs uppercase tracking-[0.25em] text-[#c59b5f] font-semibold">
-                  AANYA SHARMA PORTFOLIO
+                  {data.title ? `${data.title} - AANYA SHARMA` : 'AANYA SHARMA'}
                 </span>
                 <span className="text-white/40 text-xs">|</span>
                 <span className="text-xs text-white/70 tracking-wider">
@@ -241,29 +250,33 @@ export default function PortfolioGrid({ data }: PortfolioGridProps) {
                 </span>
               </div>
               <button
+                type="button"
                 onClick={(e) => {
                   e.stopPropagation();
                   setActiveItemIndex(null);
                 }}
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all duration-200 cursor-pointer"
+                className="w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-[#c59b5f] text-white hover:text-[#c59b5f] flex items-center justify-center transition-all duration-200 cursor-pointer"
                 aria-label="Close modal"
+                data-cursor="CLOSE"
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5 stroke-[2]" />
               </button>
             </div>
 
             {/* Previous Arrow */}
             <button
+              type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 setActiveItemIndex((prev) =>
                   prev !== null ? (prev - 1 + items.length) % items.length : 0
                 );
               }}
-              className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-all duration-200 cursor-pointer"
+              className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/10 hover:bg-[#c59b5f]/20 border border-white/20 hover:border-[#c59b5f] text-white hover:text-[#c59b5f] flex items-center justify-center transition-all duration-200 cursor-pointer"
               aria-label="Previous image"
+              data-cursor="PREV"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-6 h-6 stroke-[2]" />
             </button>
 
             {/* Active Image Modal */}
@@ -271,19 +284,28 @@ export default function PortfolioGrid({ data }: PortfolioGridProps) {
               className="relative max-w-5xl max-h-[82vh] w-full h-full flex flex-col items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative w-full h-full max-h-[75vh]">
-                <Image
-                  src={items[activeItemIndex].image}
-                  alt={items[activeItemIndex].alt || items[activeItemIndex].title}
-                  fill
-                  sizes="100vw"
-                  className="object-contain"
-                  priority
-                />
-              </div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeItemIndex}
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  className="relative w-full h-full max-h-[72vh] flex items-center justify-center"
+                >
+                  <Image
+                    src={items[activeItemIndex].image}
+                    alt={items[activeItemIndex].alt || items[activeItemIndex].title}
+                    fill
+                    sizes="100vw"
+                    className="object-contain drop-shadow-2xl"
+                    priority
+                  />
+                </motion.div>
+              </AnimatePresence>
 
               {/* Caption */}
-              <div className="mt-3 text-center">
+              <div className="mt-4 text-center">
                 <span className="text-[11px] uppercase tracking-[0.25em] text-[#c59b5f] font-medium block">
                   {items[activeItemIndex].category}
                 </span>
@@ -295,16 +317,18 @@ export default function PortfolioGrid({ data }: PortfolioGridProps) {
 
             {/* Next Arrow */}
             <button
+              type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 setActiveItemIndex((prev) =>
                   prev !== null ? (prev + 1) % items.length : 0
                 );
               }}
-              className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-all duration-200 cursor-pointer"
+              className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/10 hover:bg-[#c59b5f]/20 border border-white/20 hover:border-[#c59b5f] text-white hover:text-[#c59b5f] flex items-center justify-center transition-all duration-200 cursor-pointer"
               aria-label="Next image"
+              data-cursor="NEXT"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-6 h-6 stroke-[2]" />
             </button>
           </motion.div>
         )}

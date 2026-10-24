@@ -5,7 +5,6 @@ import Footer from '../../components/sections/Footer';
 import BackToTop from '../../components/ui/BackToTop';
 import Breadcrumb from '../../components/sections/Breadcrumb';
 import Services from '../../components/sections/Services';
-import Testimonials from '../../components/sections/Testimonials';
 import { common, pages, sections, type PageComponent } from '../../components/types';
 
 const pageData = pages.services;
@@ -24,12 +23,6 @@ export default function ServicesPage() {
       />
     ),
     Services: <Services data={sections.services} />,
-    Testimonials: (
-      <Testimonials
-        data={sections.testimonials}
-        className="pt-2 sm:pt-4 lg:pt-6 pb-14 sm:pb-20 lg:pb-24"
-      />
-    ),
   };
 
   return (

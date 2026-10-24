@@ -3,7 +3,7 @@
 import { useState, useMemo, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 import type { PortfolioSectionData } from '../../types';
 import FilterDropdown from '../../ui/FilterDropdown';
 
@@ -17,7 +17,7 @@ interface PortfolioProps {
 export default function Portfolio({
   data,
   initialCount,
-  enableLightbox = false,
+  enableLightbox = true,
   showReadMore = false,
 }: PortfolioProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>(data.all_category_label);
@@ -50,7 +50,7 @@ export default function Portfolio({
     setVisibleCount(defaultCount);
   };
 
-  // Keyboard navigation for Lightbox Modal
+  // Keyboard navigation & body scroll locking for Lightbox Modal
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (activeItemIndex === null) return;
@@ -69,8 +69,14 @@ export default function Portfolio({
 
   useEffect(() => {
     if (activeItemIndex === null) return;
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, [activeItemIndex, handleKeyDown]);
 
   return (
@@ -145,9 +151,11 @@ export default function Portfolio({
                 transition={{ duration: 0.4 }}
                 onClick={() => {
                   if (enableLightbox) {
-                    setActiveItemIndex(idx);
+                    const itemIndex = filteredItems.findIndex((f) => f.id === item.id);
+                    setActiveItemIndex(itemIndex >= 0 ? itemIndex : idx);
                   }
                 }}
+                data-cursor="VIEW"
                 className={`group relative aspect-[3/4.2] w-full overflow-hidden bg-[#e8e2d8] shadow-md shadow-black/5 ${
                   enableLightbox ? 'cursor-pointer' : ''
                 }`}
@@ -163,6 +171,13 @@ export default function Portfolio({
 
                 {/* Subtle vignette hover gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+
+                {/* Hover zoom icon indicator */}
+                <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                  <div className="w-10 h-10 rounded-full bg-black/70 border border-[#c59b5f]/70 text-[#c59b5f] flex items-center justify-center scale-75 group-hover:scale-100 transition-all duration-300 shadow-xl">
+                    <ZoomIn className="w-5 h-5 stroke-[1.8]" />
+                  </div>
+                </div>
 
                 {/* Bottom Left Pill Tag (Static badge matching screenshot, non-clickable) */}
                 <div className="absolute bottom-3.5 left-3.5 z-10 pointer-events-none select-none">
@@ -198,12 +213,13 @@ export default function Portfolio({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-xl p-4 sm:p-8"
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4 sm:p-8 select-none"
             onClick={() => setActiveItemIndex(null)}
+            data-cursor="CLOSE"
           >
             {/* Top Bar with Counter & Close */}
-            <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-20 text-white">
+            <div className="absolute top-4 sm:top-6 left-4 sm:left-8 right-4 sm:right-8 flex items-center justify-between z-20 text-white">
               <div className="flex items-center gap-3">
                 <span className="text-xs uppercase tracking-[0.25em] text-[#c59b5f] font-semibold">
                   {data.lightbox_modal_title || 'AANYA SHARMA PORTFOLIO'}
@@ -219,10 +235,11 @@ export default function Portfolio({
                   e.stopPropagation();
                   setActiveItemIndex(null);
                 }}
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all duration-200 cursor-pointer"
+                className="w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-[#c59b5f] text-white hover:text-[#c59b5f] flex items-center justify-center transition-all duration-200 cursor-pointer"
                 aria-label={data.lightbox_close_label || 'Close modal'}
+                data-cursor="CLOSE"
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5 stroke-[2]" />
               </button>
             </div>
 
@@ -235,10 +252,11 @@ export default function Portfolio({
                   prev !== null ? (prev - 1 + filteredItems.length) % filteredItems.length : 0
                 );
               }}
-              className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-all duration-200 cursor-pointer"
+              className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/10 hover:bg-[#c59b5f]/20 border border-white/20 hover:border-[#c59b5f] text-white hover:text-[#c59b5f] flex items-center justify-center transition-all duration-200 cursor-pointer"
               aria-label={data.lightbox_prev_label || 'Previous image'}
+              data-cursor="PREV"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-6 h-6 stroke-[2]" />
             </button>
 
             {/* Active Image Modal */}
@@ -246,19 +264,28 @@ export default function Portfolio({
               className="relative max-w-5xl max-h-[82vh] w-full h-full flex flex-col items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative w-full h-full max-h-[75vh]">
-                <Image
-                  src={filteredItems[activeItemIndex].image}
-                  alt={filteredItems[activeItemIndex].image_alt || filteredItems[activeItemIndex].title}
-                  fill
-                  sizes="100vw"
-                  className="object-contain"
-                  priority
-                />
-              </div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeItemIndex}
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  className="relative w-full h-full max-h-[72vh] flex items-center justify-center"
+                >
+                  <Image
+                    src={filteredItems[activeItemIndex].image}
+                    alt={filteredItems[activeItemIndex].image_alt || filteredItems[activeItemIndex].title}
+                    fill
+                    sizes="100vw"
+                    className="object-contain drop-shadow-2xl"
+                    priority
+                  />
+                </motion.div>
+              </AnimatePresence>
 
               {/* Caption */}
-              <div className="mt-3 text-center">
+              <div className="mt-4 text-center">
                 <span className="text-[11px] uppercase tracking-[0.25em] text-[#c59b5f] font-medium block">
                   {filteredItems[activeItemIndex].category}
                 </span>
@@ -277,10 +304,11 @@ export default function Portfolio({
                   prev !== null ? (prev + 1) % filteredItems.length : 0
                 );
               }}
-              className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-all duration-200 cursor-pointer"
+              className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/10 hover:bg-[#c59b5f]/20 border border-white/20 hover:border-[#c59b5f] text-white hover:text-[#c59b5f] flex items-center justify-center transition-all duration-200 cursor-pointer"
               aria-label={data.lightbox_next_label || 'Next image'}
+              data-cursor="NEXT"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-6 h-6 stroke-[2]" />
             </button>
           </motion.div>
         )}

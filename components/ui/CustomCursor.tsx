@@ -29,17 +29,36 @@ export default function CustomCursor() {
     let isVisible = false;
     let isHovered = false;
     let isClicked = false;
-    let hasCustomText = false;
+    let currentBadgeText = '';
     let rafId: number;
 
-    const updateVisualState = () => {
+    // State tracking to prevent redundant DOM updates
+    let prevHovered = false;
+    let prevClicked = false;
+    let prevBadgeText = '';
+
+    const updateVisualState = (force = false) => {
+      const hasText = Boolean(currentBadgeText);
+      if (
+        !force &&
+        prevHovered === isHovered &&
+        prevClicked === isClicked &&
+        prevBadgeText === currentBadgeText
+      ) {
+        return;
+      }
+
+      prevHovered = isHovered;
+      prevClicked = isClicked;
+      prevBadgeText = currentBadgeText;
+
       if (isClicked) {
-        ringInner.style.transform = hasCustomText ? 'scale(1.5)' : isHovered ? 'scale(1.2)' : 'scale(0.85)';
+        ringInner.style.transform = hasText ? 'scale(1.4)' : isHovered ? 'scale(1.2)' : 'scale(0.85)';
         dotInner.style.transform = 'scale(0.5)';
-      } else if (hasCustomText) {
-        ringInner.style.transform = 'scale(1.8)';
+      } else if (hasText) {
+        ringInner.style.transform = 'scale(1.75)';
         ringInner.style.borderColor = '#c59b5f';
-        ringInner.style.backgroundColor = 'rgba(197, 155, 95, 0.18)';
+        ringInner.style.backgroundColor = 'rgba(197, 155, 95, 0.22)';
         dotInner.style.transform = 'scale(0)';
       } else if (isHovered) {
         ringInner.style.transform = 'scale(1.35)';
@@ -51,6 +70,10 @@ export default function CustomCursor() {
         ringInner.style.borderColor = 'rgba(197, 155, 95, 0.45)';
         ringInner.style.backgroundColor = 'rgba(197, 155, 95, 0.04)';
         dotInner.style.transform = 'scale(1)';
+      }
+
+      if (badge) {
+        badge.textContent = currentBadgeText;
       }
     };
 
@@ -65,6 +88,9 @@ export default function CustomCursor() {
         dot.style.opacity = '1';
         ring.style.opacity = '1';
       }
+
+      // Zero-latency hardware tracking for the precision dot
+      dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
     };
 
     const onMouseDown = () => {
@@ -109,32 +135,31 @@ export default function CustomCursor() {
 
       if (interactive) {
         isHovered = true;
-        const customText = interactive.getAttribute('data-cursor');
-        if (customText && badge) {
-          hasCustomText = true;
-          badge.textContent = customText;
-        } else {
-          hasCustomText = false;
-          if (badge) badge.textContent = '';
-        }
+        currentBadgeText = interactive.getAttribute('data-cursor') || '';
       } else {
         isHovered = false;
-        hasCustomText = false;
-        if (badge) badge.textContent = '';
+        currentBadgeText = '';
       }
 
       updateVisualState();
     };
 
-    // 120/144 FPS Hardware-accelerated GPU render loop
+    // Ultra-fluid 120/144+ FPS render loop with smooth interpolation & subpixel stability
     const render = () => {
       if (isVisible) {
-        // Dot tracks instant 1:1 with hardware pointer (zero delay)
-        dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+        const dx = mouseX - ringX;
+        const dy = mouseY - ringY;
 
-        // Ring follows smoothly with 0.25 Lerp factor (fast, snappy, responsive)
-        ringX += (mouseX - ringX) * 0.25;
-        ringY += (mouseY - ringY) * 0.25;
+        // Snappy, silky-smooth lerp (0.35 factor) - zero lag feeling
+        if (Math.abs(dx) < 0.15 && Math.abs(dy) < 0.15) {
+          ringX = mouseX;
+          ringY = mouseY;
+        } else {
+          ringX += dx * 0.35;
+          ringY += dy * 0.35;
+        }
+
+        dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
         ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
       }
 
@@ -163,31 +188,32 @@ export default function CustomCursor() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden"
+      className="pointer-events-none fixed inset-0 z-[99999] overflow-hidden"
+      style={{ contain: 'layout style paint' }}
       aria-hidden="true"
     >
-      {/* Outer Follower Ring */}
+      {/* Outer Follower Ring - Smooth Lerp Glide */}
       <div
         ref={ringRef}
         style={{ opacity: 0 }}
-        className="fixed top-[-16px] left-[-16px] w-[32px] h-[32px] pointer-events-none will-change-transform"
+        className="absolute top-0 left-0 -ml-4 -mt-4 w-8 h-8 pointer-events-none will-change-transform"
       >
         <div
           ref={ringInnerRef}
-          className="w-full h-full rounded-full border border-[#c59b5f]/45 bg-[#c59b5f]/[0.04] flex items-center justify-center transition-all duration-150 ease-out will-change-transform"
+          className="w-full h-full rounded-full border border-[#c59b5f]/45 bg-[#c59b5f]/[0.04] flex items-center justify-center transition-[transform,border-color,background-color] duration-150 ease-out will-change-transform"
         >
           <span
             ref={badgeRef}
-            className="text-[8px] uppercase tracking-widest font-semibold text-[#c59b5f] select-none"
+            className="text-[8px] uppercase tracking-widest font-semibold text-[#c59b5f] select-none pointer-events-none"
           />
         </div>
       </div>
 
-      {/* Center Precision Dot - 0ms instant tracking */}
+      {/* Center Precision Dot - 0ms instant hardware tracking */}
       <div
         ref={dotRef}
         style={{ opacity: 0 }}
-        className="fixed top-[-4px] left-[-4px] w-2 h-2 pointer-events-none will-change-transform"
+        className="absolute top-0 left-0 -ml-1 -mt-1 w-2 h-2 pointer-events-none will-change-transform"
       >
         <div
           ref={dotInnerRef}

@@ -56,18 +56,49 @@ button,
 
 /* Custom Cursor styles on fine pointer (desktop) devices */
 @media (pointer: fine) {
-  body,
-  a,
-  button,
-  [role="button"],
-  .cursor-pointer {
-    cursor: none;
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
   }
 
   input,
   textarea,
   select {
-    cursor: auto;
+    cursor: auto !important;
   }
+}
+
+/* Classic luxury custom scrollbar specifically for header overlay menu */
+.header-menu-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #c59b5f rgba(255, 255, 255, 0.05);
+}
+
+.header-menu-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.header-menu-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 9999px;
+  margin: 8px 0;
+}
+
+.header-menu-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c59b5f 0%, #9f763c 100%);
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.header-menu-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ecd5a5 0%, #c59b5f 100%);
+  box-shadow: 0 0 8px rgba(197, 155, 95, 0.6);
+}
+
+.header-menu-scrollbar::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
